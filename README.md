@@ -4,6 +4,12 @@
   <img alt="iCloudMCP">
 </picture>
 
+> [!NOTE]
+> **This is a fork of [iMCP](https://github.com/mattt/iMCP) by [Mattt](https://mat.tt).**
+> iCloudMCP extends and rebrands the original project. All credit for the core architecture,
+> MCP server design, iMessage database access, JSON-LD tooling, and the bulk of the codebase
+> belongs to Mattt and the original contributors. See [Acknowledgments](#acknowledgments).
+
 iCloudMCP is a macOS app for connecting your digital life with AI.
 It works with [Claude Desktop][claude-app]
 and a [growing list of clients][mcp-clients] that support the
@@ -65,19 +71,18 @@ and a [growing list of clients][mcp-clients] that support the
 
 ## Getting Started
 
-### Download and open the app
+### Build from source
 
-First, [download the iCloudMCP app](https://iCloudMCP.app/download)
-(requires macOS 15.3 or later).
-
-Or, if you have [Homebrew](https://brew.sh) installed,
-you can run the following command:
+iCloudMCP is a development fork. To run it, build from source using Xcode:
 
 ```console
-brew install --cask ksyed0/tap/iCloudMCP
+git clone https://github.com/ksyed0/iCloudMCP.git
+open iCloudMCP.xcodeproj
 ```
 
-<img align="right" width="344" src="/Assets/icloudmcp-screenshot-first-launch.png" alt="Screenshot of iCloudMCP on first launch" />
+Select the **iCloudMCP** scheme and build (`⌘B`). Requires macOS 15.3 or later and Xcode 16+.
+
+<img align="right" width="344" src="/Assets/hero-dark.svg" alt="iCloudMCP icon" />
 
 When you open the app,
 you'll see a
@@ -94,8 +99,6 @@ and ready to connect with MCP-compatible clients.
 
 <br clear="all">
 
-<img align="right" width="372" src="/Assets/icloudmcp-screenshot-grant-permission.png" alt="Screenshot of macOS permission dialog" />
-
 ### Activate services
 
 To activate a service, click on its icon.
@@ -108,23 +111,13 @@ Click <kbd>Allow Full Access</kbd> to continue.
 > Clients like Claude Desktop _do_ send
 > your data off device as part of tool calls.
 
-<br clear="all">
-
-<img align="right" width="344" src="/Assets/icloudmcp-screenshot-all-services-active.png" alt="Screenshot of iCloudMCP with all services enabled" />
-
 Once activated,
-each service icons goes from gray to their distinctive colors —
+each service icon goes from gray to its distinctive color —
 red for Calendar, green for Messages, blue for Location, and so on.
 
 Repeat this process for all of the capabilities you'd like to enable.
 These permissions follow Apple's standard security model,
 giving you complete control over what information iCloudMCP can access.
-
-<!-- <br clear="all"> -->
-
-<!-- <img align="right" width="344" src="/Assets/icloudmcp-screenshot-configure-claude-desktop.png" /> -->
-
-<br clear="all">
 
 ### Connect to Claude Desktop
 
@@ -136,8 +129,6 @@ Click on "Developer" in the sidebar of the Settings pane,
 and then click on "Edit Config".
 This will create a configuration file at
 `~/Library/Application Support/Claude/claude_desktop_config.json`.
-
-<br/>
 
 To connect iCloudMCP to Claude Desktop,
 click <img style="display: inline" width="20" height="16" src="/Assets/icon.svg" />
@@ -167,23 +158,15 @@ and enter the following:
 
 </details>
 
-<img align="right" width="372" src="/Assets/icloudmcp-screenshot-approve-connection.png" />
-
 ### Call iCloudMCP tools from Claude Desktop
 
 Quit and reopen the Claude Desktop app.
 You'll be prompted to approve the connection.
 
-<br clear="all">
-
 After approving the connection,
 you should now see 🔨12 in the bottom right corner of your chat box.
 Click on that to see a list of all the tools made available to Claude
 by iCloudMCP.
-
-<p align="center">
-  <img width="694" src="/Assets/claude-desktop-screenshot-tools-enabled.png" alt="Screenshot of Claude Desktop with tools enabled" />
-</p>
 
 Now you can ask Claude questions that require access to your personal data,
 such as:
@@ -193,10 +176,6 @@ such as:
 Claude will use the appropriate tools to retrieve this information,
 providing you with accurate, personalized responses
 without requiring you to manually share this data during your conversation.
-
-<p align="center">
-  <img width="738" src="/Assets/claude-desktop-screenshot-message.png" alt="Screenshot of Claude response to user message 'How's the weather where I am?'" />
-</p>
 
 ### Connect to [Claude Code][claude-code]
 
@@ -221,7 +200,7 @@ claude mcp add-from-claude-desktop
 
 Open this deep link to automatically install the iCloudMCP server:
 
-<a href="https://cursor.com/en-US/install-mcp?name=iCloudMCP&config=eyJjb21tYW5kIjoiL0FwcGxpY2F0aW9ucy9pTUNQLmFwcC9Db250ZW50cy9NYWNPUy9pbWNwLXNlcnZlciAifQ%3D%3D">
+<a href="https://cursor.com/en-US/install-mcp?name=iCloudMCP&config=eyJjb21tYW5kIjoiL0FwcGxpY2F0aW9ucy9pQ2xvdWRNQ1AuYXBwL0NvbnRlbnRzL01hY09TL2ljbG91ZG1jcC1zZXJ2ZXIifQo=">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://cursor.com/deeplink/mcp-install-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://cursor.com/deeplink/mcp-install-light.svg">
@@ -260,13 +239,11 @@ Both advertise a service with type "\_mcp.\_tcp" and domain "local".
 Requests from MCP clients are read by the CLI from `stdin`
 and relayed to the app;
 responses from the app are received by the CLI and written to `stdout`.
-See [`StdioProxy`](https://github.com/ksyed0/iCloudMCP/blob/8cf9d250286288b06bf5d3dda78f5905ad0d7729/CLI/main.swift#L47)
+See [`StdioProxy`](https://github.com/ksyed0/iCloudMCP/blob/main/CLI/main.swift)
 for implementation details.
 
-For this project, we created what became
-[the official Swift SDK][swift-sdk]
-for Model Context Protocol servers and clients.
-The app uses this package to handle proxied requests from MCP clients.
+The app uses the [Swift SDK][swift-sdk] for Model Context Protocol servers and clients
+to handle proxied requests from MCP clients.
 
 ### iMessage Database Access
 
@@ -286,7 +263,7 @@ Over the past few years,
 Apple has moved away from storing messages in plain text
 and instead toward a proprietary `typedstream` format.
 
-For this project, we created [Madrid][madrid]:
+The app uses [Madrid][madrid]:
 a Swift package for reading your iMessage database.
 It includes a Swift implementation for decoding Apple's `typedstream` format,
 adapted from Christopher Sardegna's [imessage-exporter] project
@@ -297,7 +274,7 @@ and [blog post about reverse-engineering `typedstream`][typedstream-blog-post].
 The tools provided by iCloudMCP return results as
 [JSON-LD][json-ld] documents.
 For example,
-the `fetchContacts` tool uses the [Contacts framework][contacts-framework],
+the `contacts_search` tool uses the [Contacts framework][contacts-framework],
 which represents people and organizations with the [`CNContact`][cncontact] type.
 Here's how an object of that type is encoded as JSON-LD:
 
@@ -315,10 +292,24 @@ people, postal addresses, events, and many other objects we want to represent.
 And JSON-LD is a convenient encoding format for
 humans, AI, and conventional software alike.
 
-For this project, we created [Ontology][ontology]:
+The app uses [Ontology][ontology]:
 a Swift package for working with structured data.
 It includes convenience initializers for types from Apple frameworks,
 such as those returned by iCloudMCP tools.
+
+## Development Tooling
+
+This fork uses [PlanVisualizer](https://github.com/ksyed0/PlanVisualizer) to track
+epics, stories, bugs, and AI session costs. PlanVisualizer parses the markdown files
+in `docs/` and generates a static HTML dashboard.
+
+```console
+npm run plan:test      # run the PlanVisualizer test suite
+npm run plan:generate  # generate docs/plan-status.html from tracked docs
+```
+
+Tracked documents: `docs/RELEASE_PLAN.md`, `docs/BUGS.md`, `docs/AI_COST_LOG.md`, `progress.md`.
+See `plan_visualizer.md` in this repo for the exact format each file must follow.
 
 ## Debugging
 
@@ -344,8 +335,6 @@ which is helpful for understanding how the protocol works.
 
 ### Using Companion
 
-<img align="right" width="284" src="/Assets/companion-screenshot-add-server.png" />
-
 [Companion][companion] is a utility for testing and debugging your MCP servers
 (requires macOS 15 or later).
 It gives you an easy way to browse and interact with
@@ -361,9 +350,15 @@ Here's how to connect it to iCloudMCP:
    - Paste the copied iCloudMCP server command
    - Click "Add Server"
 
-<br clear="all">
-
 ## Acknowledgments
+
+**iCloudMCP is a fork of [iMCP](https://github.com/mattt/iMCP),**
+originally created by [Mattt](https://mat.tt) ([@mattt](https://github.com/mattt)).
+The original project established the core architecture: the dual App + CLI design,
+Bonjour-based transport, all ten Apple service integrations, the JSON-LD tool result
+encoding, and the iMessage SQLite approach. This fork would not exist without that work.
+
+Additional credits from the original project:
 
 - [Justin Spahr-Summers](https://jspahrsummers.com/)
   ([@jspahrsummers](https://github.com/jspahrsummers)),
@@ -379,13 +374,25 @@ Here's how to connect it to iCloudMCP:
 
 ## License
 
-This project is available under the MIT license.
-See the LICENSE file for more info.
+iCloudMCP is available under the **MIT License** — the same license as the upstream
+[iMCP](https://github.com/mattt/iMCP) project from which it is forked.
+
+The MIT License was chosen because:
+- It is **required**: the upstream iMCP project is MIT-licensed, and forking it
+  obligates this project to carry the same license and copyright notice.
+- It is **appropriate**: a developer tool that provides local macOS integrations
+  benefits from permissive licensing so other projects can freely build on it.
+- It is **simple**: MIT imposes only one obligation — preserve the copyright notice —
+  which is already done in `LICENSE.md`.
+
+See `LICENSE.md` for the full text, including both the original copyright (Mattt, 2025)
+and the fork copyright (Kamal Syed, 2026).
 
 ## Legal
 
 iMessage® is a registered trademark of Apple Inc.
 This project is not affiliated with, endorsed, or sponsored by Apple Inc.
+This project is not affiliated with, endorsed, or sponsored by Anthropic.
 
 [amp]: https://ampcode.com
 [app-sandbox]: https://developer.apple.com/documentation/security/app-sandbox
@@ -399,12 +406,13 @@ This project is not affiliated with, endorsed, or sponsored by Apple Inc.
 [cursor]: https://cursor.com
 [imessage-exporter]: https://github.com/ReagentX/imessage-exporter
 [json-ld]: https://json-ld.org
-[madrid]: https://github.com/mattt/Madrid
+[madrid]: https://github.com/loopwork-ai/madrid
 [mcp]: https://modelcontextprotocol.io/introduction
 [mcp-clients]: https://modelcontextprotocol.io/clients
 [mcp-transports]: https://modelcontextprotocol.io/docs/concepts/architecture#transport-layer
 [nsopenpanel]: https://developer.apple.com/documentation/appkit/nsopenpanel
-[ontology]: https://github.com/mattt/Ontology
+[ontology]: https://github.com/loopwork-ai/Ontology
 [schema.org]: https://schema.org
 [swift-sdk]: https://github.com/modelcontextprotocol/swift-sdk
 [typedstream-blog-post]: https://chrissardegna.com/blog/reverse-engineering-apples-typedstream-format/
+[plan-visualizer]: https://github.com/ksyed0/PlanVisualizer
