@@ -328,7 +328,7 @@ final class ServerController: ObservableObject {
     private func sendClientConnectionNotification(clientName: String) {
         let content = UNMutableNotificationContent()
         content.title = "Client Connected"
-        content.body = "Client '\(clientName)' has connected to iMCP"
+        content.body = "Client '\(clientName)' has connected to iCloudMCP"
         content.threadIdentifier = "client-connection-\(clientName)"
 
         let request = UNNotificationRequest(
@@ -437,7 +437,7 @@ actor MCPConnectionManager {
 
         // MCP server instance for this connection.
         self.server = MCP.Server(
-            name: Bundle.main.name ?? "iMCP",
+            name: Bundle.main.name ?? "iCloudMCP",
             version: Bundle.main.shortVersionString ?? "unknown",
             capabilities: MCP.Server.Capabilities(
                 tools: .init(listChanged: true)
@@ -897,9 +897,9 @@ actor ServerNetworkManager {
             log.notice("Tool call received from \(connectionID): \(params.name)")
 
             guard await self.isEnabledState else {
-                log.notice("Tool call rejected: iMCP is disabled")
+                log.notice("Tool call rejected: iCloudMCP is disabled")
                 return CallTool.Result(
-                    content: [.text("iMCP is currently disabled. Please enable it to use tools.")],
+                    content: [.text("iCloudMCP is currently disabled. Please enable it to use tools.")],
                     isError: true
                 )
             }
@@ -978,7 +978,7 @@ actor ServerNetworkManager {
         guard isEnabledState != enabled else { return }
 
         isEnabledState = enabled
-        log.info("iMCP enabled state changed to: \(enabled)")
+        log.info("iCloudMCP enabled state changed to: \(enabled)")
 
         // Notify all connected clients that the tool list has changed.
         for (_, connectionManager) in connections {

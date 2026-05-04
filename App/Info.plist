@@ -11,7 +11,7 @@
 	<key>SUEnableInstallerLauncherService</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://downloads.imcp.app/appcast.xml</string>
+	<string>https://downloads.icloudmcp.app/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>+2ibtYfPSNKpUJsn1R9Ywc1GnjQA5vemVN95d0EzGxg=</string>
 </dict>

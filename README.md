@@ -1,10 +1,10 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="Assets/hero-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="Assets/hero-light.svg">
-  <img alt="iMCP">
+  <img alt="iCloudMCP">
 </picture>
 
-iMCP is a macOS app for connecting your digital life with AI.
+iCloudMCP is a macOS app for connecting your digital life with AI.
 It works with [Claude Desktop][claude-app]
 and a [growing list of clients][mcp-clients] that support the
 [Model Context Protocol (MCP)][mcp].
@@ -67,24 +67,24 @@ and a [growing list of clients][mcp-clients] that support the
 
 ### Download and open the app
 
-First, [download the iMCP app](https://iMCP.app/download)
+First, [download the iCloudMCP app](https://iCloudMCP.app/download)
 (requires macOS 15.3 or later).
 
 Or, if you have [Homebrew](https://brew.sh) installed,
 you can run the following command:
 
 ```console
-brew install --cask mattt/tap/iMCP
+brew install --cask ksyed0/tap/iCloudMCP
 ```
 
-<img align="right" width="344" src="/Assets/imcp-screenshot-first-launch.png" alt="Screenshot of iMCP on first launch" />
+<img align="right" width="344" src="/Assets/icloudmcp-screenshot-first-launch.png" alt="Screenshot of iCloudMCP on first launch" />
 
 When you open the app,
 you'll see a
 <img style="display: inline" width="20" height="16" src="/Assets/icon.svg" />
 icon in your menu bar.
 
-Clicking on this icon reveals the iMCP menu,
+Clicking on this icon reveals the iCloudMCP menu,
 which displays all available services.
 Initially, all services will appear in gray,
 indicating they're inactive.
@@ -94,23 +94,23 @@ and ready to connect with MCP-compatible clients.
 
 <br clear="all">
 
-<img align="right" width="372" src="/Assets/imcp-screenshot-grant-permission.png" alt="Screenshot of macOS permission dialog" />
+<img align="right" width="372" src="/Assets/icloudmcp-screenshot-grant-permission.png" alt="Screenshot of macOS permission dialog" />
 
 ### Activate services
 
 To activate a service, click on its icon.
 The system will prompt you with a permission dialog.
-For example, when activating Calendar access, you'll see a dialog asking `"iMCP" Would Like Full Access to Your Calendar`.
+For example, when activating Calendar access, you'll see a dialog asking `"iCloudMCP" Would Like Full Access to Your Calendar`.
 Click <kbd>Allow Full Access</kbd> to continue.
 
 > [!IMPORTANT]
-> iMCP **does not** collect or store any of your data.
+> iCloudMCP **does not** collect or store any of your data.
 > Clients like Claude Desktop _do_ send
 > your data off device as part of tool calls.
 
 <br clear="all">
 
-<img align="right" width="344" src="/Assets/imcp-screenshot-all-services-active.png" alt="Screenshot of iMCP with all services enabled" />
+<img align="right" width="344" src="/Assets/icloudmcp-screenshot-all-services-active.png" alt="Screenshot of iCloudMCP with all services enabled" />
 
 Once activated,
 each service icons goes from gray to their distinctive colors —
@@ -118,11 +118,11 @@ red for Calendar, green for Messages, blue for Location, and so on.
 
 Repeat this process for all of the capabilities you'd like to enable.
 These permissions follow Apple's standard security model,
-giving you complete control over what information iMCP can access.
+giving you complete control over what information iCloudMCP can access.
 
 <!-- <br clear="all"> -->
 
-<!-- <img align="right" width="344" src="/Assets/imcp-screenshot-configure-claude-desktop.png" /> -->
+<!-- <img align="right" width="344" src="/Assets/icloudmcp-screenshot-configure-claude-desktop.png" /> -->
 
 <br clear="all">
 
@@ -139,12 +139,12 @@ This will create a configuration file at
 
 <br/>
 
-To connect iMCP to Claude Desktop,
+To connect iCloudMCP to Claude Desktop,
 click <img style="display: inline" width="20" height="16" src="/Assets/icon.svg" />
 \> "Configure Claude Desktop".
 
 This will add or update the MCP server configuration to use the
-`imcp-server` executable bundled in the application.
+`icloudmcp-server` executable bundled in the application.
 Other MCP server configurations in the file will be preserved.
 
 <details>
@@ -158,8 +158,8 @@ and enter the following:
 ```json
 {
   "mcpServers": {
-    "iMCP": {
-      "command": "{paste iMCP server command}"
+    "iCloudMCP": {
+      "command": "{paste iCloudMCP server command}"
     }
   }
 }
@@ -167,9 +167,9 @@ and enter the following:
 
 </details>
 
-<img align="right" width="372" src="/Assets/imcp-screenshot-approve-connection.png" />
+<img align="right" width="372" src="/Assets/icloudmcp-screenshot-approve-connection.png" />
 
-### Call iMCP tools from Claude Desktop
+### Call iCloudMCP tools from Claude Desktop
 
 Quit and reopen the Claude Desktop app.
 You'll be prompted to approve the connection.
@@ -179,7 +179,7 @@ You'll be prompted to approve the connection.
 After approving the connection,
 you should now see 🔨12 in the bottom right corner of your chat box.
 Click on that to see a list of all the tools made available to Claude
-by iMCP.
+by iCloudMCP.
 
 <p align="center">
   <img width="694" src="/Assets/claude-desktop-screenshot-tools-enabled.png" alt="Screenshot of Claude Desktop with tools enabled" />
@@ -200,10 +200,10 @@ without requiring you to manually share this data during your conversation.
 
 ### Connect to [Claude Code][claude-code]
 
-To add iMCP globally after installing the app:
+To add iCloudMCP globally after installing the app:
 
 ```console
-claude mcp add --scope user iMCP -- /Applications/iMCP.app/Contents/MacOS/imcp-server
+claude mcp add --scope user iCloudMCP -- /Applications/iCloudMCP.app/Contents/MacOS/icloudmcp-server
 ```
 
 <details>
@@ -219,9 +219,9 @@ claude mcp add-from-claude-desktop
 
 ### Connect to [Cursor][cursor]
 
-Open this deep link to automatically install the iMCP server:
+Open this deep link to automatically install the iCloudMCP server:
 
-<a href="https://cursor.com/en-US/install-mcp?name=iMCP&config=eyJjb21tYW5kIjoiL0FwcGxpY2F0aW9ucy9pTUNQLmFwcC9Db250ZW50cy9NYWNPUy9pbWNwLXNlcnZlciAifQ%3D%3D">
+<a href="https://cursor.com/en-US/install-mcp?name=iCloudMCP&config=eyJjb21tYW5kIjoiL0FwcGxpY2F0aW9ucy9pTUNQLmFwcC9Db250ZW50cy9NYWNPUy9pbWNwLXNlcnZlciAifQ%3D%3D">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://cursor.com/deeplink/mcp-install-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://cursor.com/deeplink/mcp-install-light.svg">
@@ -231,26 +231,26 @@ Open this deep link to automatically install the iMCP server:
 
 ### Connect to [Amp][amp]
 
-To add iMCP globally (available in all projects):
+To add iCloudMCP globally (available in all projects):
 
 ```console
-amp mcp add iMCP -- /Applications/iMCP.app/Contents/MacOS/imcp-server
+amp mcp add iCloudMCP -- /Applications/iCloudMCP.app/Contents/MacOS/icloudmcp-server
 ```
 
 > [!NOTE]
-> When a client first connects, iMCP will show an approval dialog.
+> When a client first connects, iCloudMCP will show an approval dialog.
 > Click "Allow" and check "Always trust this client" to avoid repeated prompts.
 
 ## Technical Details
 
 ### App & CLI
 
-iMCP is a macOS app that bundles a command-line executable, `imcp-server`.
+iCloudMCP is a macOS app that bundles a command-line executable, `icloudmcp-server`.
 
-- [`iMCP.app`](/App/) provides UI for configuring services and — most importantly —
+- [`iCloudMCP.app`](/App/) provides UI for configuring services and — most importantly —
   a means of interacting with macOS system permissions,
   so that it can access Contacts, Calendar, and other information.
-- [`imcp-server`](/CLI/) provides an MCP server that
+- [`icloudmcp-server`](/CLI/) provides an MCP server that
   uses standard input/output for communication
   ([stdio transport][mcp-transports]).
 
@@ -260,7 +260,7 @@ Both advertise a service with type "\_mcp.\_tcp" and domain "local".
 Requests from MCP clients are read by the CLI from `stdin`
 and relayed to the app;
 responses from the app are received by the CLI and written to `stdout`.
-See [`StdioProxy`](https://github.com/mattt/iMCP/blob/8cf9d250286288b06bf5d3dda78f5905ad0d7729/CLI/main.swift#L47)
+See [`StdioProxy`](https://github.com/ksyed0/iCloudMCP/blob/8cf9d250286288b06bf5d3dda78f5905ad0d7729/CLI/main.swift#L47)
 for implementation details.
 
 For this project, we created what became
@@ -274,7 +274,7 @@ Apple doesn't provide public APIs for accessing your messages.
 However, the Messages app on macOS stores data in a SQLite database located at
 `~/Library/Messages/chat.db`.
 
-iMCP runs in [App Sandbox][app-sandbox],
+iCloudMCP runs in [App Sandbox][app-sandbox],
 which limits its access to user data and system resources.
 When you go to enable the Messages service,
 you'll be prompted to open the `chat.db` file through the standard file picker.
@@ -294,7 +294,7 @@ and [blog post about reverse-engineering `typedstream`][typedstream-blog-post].
 
 ### JSON-LD for Tool Results
 
-The tools provided by iMCP return results as
+The tools provided by iCloudMCP return results as
 [JSON-LD][json-ld] documents.
 For example,
 the `fetchContacts` tool uses the [Contacts framework][contacts-framework],
@@ -318,13 +318,13 @@ humans, AI, and conventional software alike.
 For this project, we created [Ontology][ontology]:
 a Swift package for working with structured data.
 It includes convenience initializers for types from Apple frameworks,
-such as those returned by iMCP tools.
+such as those returned by iCloudMCP tools.
 
 ## Debugging
 
 ### Using the MCP Inspector
 
-To debug interactions between iMCP and clients,
+To debug interactions between iCloudMCP and clients,
 you can use the [inspector tool](https://github.com/modelcontextprotocol/inspector)
 (requires Node.js):
 
@@ -332,14 +332,14 @@ you can use the [inspector tool](https://github.com/modelcontextprotocol/inspect
 2. Open a terminal and run the following commands:
 
    ```console
-   # Download and run inspector package on imcp-server
+   # Download and run inspector package on icloudmcp-server
    npx @modelcontextprotocol/inspector [paste-copied-command]
 
    # Open inspector web app running locally
    open http://127.0.0.1:6274
    ```
 
-Inspector lets you see all requests and responses between the client and the iMCP server,
+Inspector lets you see all requests and responses between the client and the iCloudMCP server,
 which is helpful for understanding how the protocol works.
 
 ### Using Companion
@@ -350,15 +350,15 @@ which is helpful for understanding how the protocol works.
 (requires macOS 15 or later).
 It gives you an easy way to browse and interact with
 a server's prompts, resources, and tools.
-Here's how to connect it to iMCP:
+Here's how to connect it to iCloudMCP:
 
 1. Click <img style="display: inline" width="20" height="16" src="/Assets/icon.svg" /> > "Copy server command to clipboard"
 2. [Download][companion-download] and open the Companion app
 3. Click the <kbd>+</kbd> button in the toolbar to add an MCP server
 4. Fill out the form:
-   - Enter "iMCP" as the name
+   - Enter "iCloudMCP" as the name
    - Select "STDIO" as the transport
-   - Paste the copied iMCP server command
+   - Paste the copied iCloudMCP server command
    - Click "Add Server"
 
 <br clear="all">

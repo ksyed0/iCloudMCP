@@ -10,7 +10,7 @@ class AboutWindowController: NSWindowController {
             defer: false
         )
         window.center()
-        window.title = "About iMCP"
+        window.title = "About iCloudMCP"
         window.contentView = NSHostingView(rootView: AboutView())
         window.isReleasedWhenClosed = false
         self.init(window: window)
@@ -30,7 +30,7 @@ private struct AboutView: View {
                 // Right column - App info and links
                 VStack(alignment: .leading, spacing: 24) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("iMCP")
+                        Text("iCloudMCP")
                             .font(.system(size: 24, weight: .medium))
 
                         if let shortVersionString = Bundle.main.shortVersionString {
@@ -42,7 +42,7 @@ private struct AboutView: View {
 
                     Button("Report an Issue...") {
                         NSWorkspace.shared.open(
-                            URL(string: "https://github.com/mattt/iMCP/issues/new")!
+                            URL(string: "https://github.com/ksyed0/iCloudMCP/issues/new")!
                         )
                     }
                 }

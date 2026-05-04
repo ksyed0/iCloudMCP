@@ -1,70 +1,114 @@
-# CLAUDE.md — Claude Code Session Instructions
+# CLAUDE.md
 
-> **Platform file for Claude Code.** The authoritative operating standards are in `AGENTS.md`. This file adds Claude-specific directives and serves as the session entry point.
-
----
-
-## Mandatory Session Startup
-
-1. Read `AGENTS.md` in full before writing any code or using any tools.
-2. Read `MEMORY.md` and all linked topic files (if present).
-3. Read `PROMPT_LOG.md` to understand the prompt history and where the last session ended (if present).
-4. Check `docs/ID_REGISTRY.md` before creating any new artefact (epic, story, task, AC, TC, bug) (if present).
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ---
 
-## Project at a Glance
+## Build Commands
 
-- **Repo:** `ksyed0/iCloudMCP`
-- **Purpose:** macOS app connecting your digital life with AI via the Model Context Protocol (MCP).
-- **Platform:** macOS (Swift / SwiftUI / Xcode)
-- **Xcode Project:** `iMCP.xcodeproj`
-- **App entry point:** `App/App.swift`
-- **PlanVisualizer entry point:** `node tools/generate-plan.js`
-- **PlanVisualizer config:** `plan-visualizer.config.json`
-- **Project Constitution:** `PROJECT.md` (create if missing; see AGENTS.md)
+```bash
+# Build both targets (app + CLI server)
+xcodebuild -project iCloudMCP.xcodeproj -scheme iCloudMCP build
+
+# Build for release / archive
+Scripts/release.sh archive
+
+# Run PlanVisualizer test suite (must pass before committing)
+npm run plan:test
+
+# Run PlanVisualizer tests with coverage
+npm run plan:test:coverage
+
+# Generate HTML dashboard from tracked docs
+npm run plan:generate
+```
+
+There are no Xcode unit tests — all automated tests are the PlanVisualizer JS suite in `tests/`.
+
+---
+
+## Architecture
+
+### Two Xcode targets
+
+| Target | Binary | Role |
+|---|---|---|
+| `iCloudMCP` | `iCloudMCP.app` | Menu bar app — runs the MCP server, manages permissions, shows UI |
+| `icloudmcp-server` | `icloudmcp-server` | CLI proxy — what AI clients (Claude Desktop) actually spawn |
+
+The CLI binary is **not** an MCP server itself. It is a stdio-to-TCP bridge: on launch it uses Bonjour (`_mcp._tcp`) to discover the running menu bar app and proxies all JSON-RPC messages between the client's stdin/stdout and the app's TCP listener. This means the GUI owns all service state and permission grants.
+
+### Service layer (`App/Services/`)
+
+Every capability (Calendar, Contacts, Messages, etc.) implements the `Service` protocol:
+
+```swift
+protocol Service {
+    @ToolBuilder var tools: [Tool] { get }
+    var isActivated: Bool { get async }  // permission granted?
+    func activate() async throws         // trigger permission request
+}
+```
+
+Tools are declared inline using the `@ToolBuilder` result builder. Each service is a singleton (`static let shared`). `ServerController` keeps a registry of all services and routes incoming tool calls to the appropriate one.
+
+### `ServerController` (`App/Controllers/ServerController.swift`)
+
+Central coordinator. Responsibilities:
+- Creates and manages the `MCP.Server` instance (from `swift-sdk`)
+- Advertises the server via Bonjour (`NWListener` + `NWBrowserDelegate`)
+- Handles connection approval flow (shows `ConnectionApprovalView`, stores trusted clients in `AppStorage`)
+- Toggles services on/off based on user switches in the menu
+- Routes tool calls to the right `Service` and rejects them when the app is disabled
+
+### Connection approval
+
+When a new TCP client connects, `ServerController` checks if the client name is in the trusted-clients list. Unknown clients trigger `ConnectionApprovalWindowController`, which shows a floating window asking the user to Allow/Deny (with an optional "Always trust" checkbox).
+
+### Key dependencies (Swift packages)
+
+| Package | Purpose |
+|---|---|
+| `swift-sdk` (modelcontextprotocol) | MCP protocol types, `Server`, transport |
+| `Ontology` (loopwork-ai) | Semantic Swift types (DateTime, etc.) for encoding tool results |
+| `JSONSchema` (loopwork-ai) | Input schema definitions for tools |
+| `MenuBarExtraAccess` | Programmatic show/hide of the menu bar extra popover |
+| `swift-service-lifecycle` | Structured lifecycle management in the CLI target |
+
+### Conditional compilation
+
+`WeatherService` is gated behind `#if WEATHERKIT_AVAILABLE` — the WeatherKit entitlement is separate and not available in all build configurations.
+
+### Security-scoped bookmarks
+
+Two places use security-scoped bookmarks for persistent out-of-sandbox file access:
+- **Messages** (`App/Services/Messages.swift`) — persistent read access to `~/Library/Messages/`
+- **Claude Desktop config** (`App/Integrations/ClaudeDesktop.swift`) — read/write access to `claude_desktop_config.json`
+
+Bookmark keys are stored in `UserDefaults` under `ksyed0.iCloudMCP.*` prefixes.
 
 ---
 
 ## PlanVisualizer Integration
 
-This project has PlanVisualizer installed for tracking plans, bugs, costs, and progress.
-
-| Command | Purpose |
-|---|---|
-| `npm run plan:test` | Run PlanVisualizer test suite (must pass before committing) |
-| `npm run plan:test:coverage` | Run with coverage report |
-| `npm run plan:generate` | Generate `docs/plan-status.html` dashboard |
-| `npm run plan:cleanup` | Clean stale worktrees and merged branches |
-
-Tracked documents live in `docs/` — see `plan_visualizer.md` for format requirements.
+Tracked documents live in `docs/` — see `plan_visualizer.md` for format requirements for `RELEASE_PLAN.md`, `TEST_CASES.md`, `BUGS.md`, `AI_COST_LOG.md`, and `progress.md`.
 
 ---
 
 ## Key Protocols (from AGENTS.md)
 
-| Protocol                | Rule                                                                                               |
-| ----------------------- | -------------------------------------------------------------------------------------------------- |
-| §1 Sequential Execution | **Disabled** — parallel agents permitted                                                           |
-| §4 Prompt Logging       | Log every user prompt to `PROMPT_LOG.md` with timestamp                                            |
-| §8 Unit Testing         | ≥80% coverage; all PlanVisualizer tests pass before any commit                                     |
-| §11 Git Workflow        | `feature/*` → `develop` (PR) → `main` (PR). Never push directly to `main` or `develop`             |
-| §14 Session Close       | Update `progress.md`, `MEMORY.md`, `PROMPT_LOG.md`, `LESSONS.md`, `MIGRATION_LOG.md` before ending |
+| Protocol                | Rule |
+| ----------------------- | ---- |
+| §8 Unit Testing         | All PlanVisualizer tests must pass before any commit |
+| §11 Git Workflow        | `feature/*` → `develop` (PR) → `main` (PR). Never push directly to `main` or `develop` |
 
----
-
-## Git Branching Quick Reference
+## Git Branching
 
 ```
 feature/US-XXXX-short-name    → squash-merge into develop via PR
 bugfix/BUG-XXXX-short-name    → squash-merge into develop via PR
 release/X.Y.Z                 → merge into main via PR
-hotfix/BUG-XXXX-short-name    → branch from main, merge into main + develop
 ```
-
-Both `main` and `develop` are **protected** — CI must pass before merging.
-
----
 
 ## Commit Message Format
 
@@ -74,16 +118,9 @@ Both `main` and `develop` are **protected** — CI must pass before merging.
 
 Types: `feat`, `fix`, `test`, `docs`, `refactor`, `chore`, `style`, `perf`
 
----
-
 ## Session Close Checklist
 
-- [ ] All changes committed to feature branch, PR opened to `develop`
-- [ ] `progress.md` updated with what was done, test results, blockers
-- [ ] `MEMORY.md` updated with new learnings (if present)
-- [ ] `PROMPT_LOG.md` updated with all prompts from this session (if present)
-- [ ] `MIGRATION_LOG.md` updated if cross-platform changes were made (if present)
-- [ ] `docs/LESSONS.md` updated if bugs were fixed or lessons learned (if present)
-- [ ] `docs/AI_COST_LOG.md` committed if the Stop hook accumulated rows during this session
-- [ ] **Before any `git stash` or branch-switch:** commit `docs/AI_COST_LOG.md` first to avoid orphaned cost rows
-- [ ] PlanVisualizer tests verified passing (`npm run plan:test`)
+- [ ] PlanVisualizer tests passing (`npm run plan:test`)
+- [ ] All changes on a feature branch, PR opened to `develop`
+- [ ] `progress.md` updated with results and blockers
+- [ ] `docs/AI_COST_LOG.md` committed if Stop hook accumulated rows this session

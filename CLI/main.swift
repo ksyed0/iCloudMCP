@@ -7,7 +7,7 @@ import SystemPackage
 import struct Foundation.Data
 import class Foundation.RunLoop
 
-var log = Logger(label: "me.mattt.iMCP.server") { StreamLogHandler.standardError(label: $0) }
+var log = Logger(label: "ksyed0.iCloudMCP.server") { StreamLogHandler.standardError(label: $0) }
 #if DEBUG
     log.logLevel = .debug
 #else
@@ -485,7 +485,7 @@ actor MCPService: Service {
                 )
                 self.browser = browser
 
-                // Find and connect to iMCP app with improved reliability
+                // Find and connect to iCloudMCP app with improved reliability
                 let endpoint: NWEndpoint = try await withCheckedThrowingContinuation {
                     continuation in
                     let connectionState = ConnectionState()
@@ -536,24 +536,24 @@ actor MCPService: Service {
 
                             // If we have results, select the most appropriate one
                             if !results.isEmpty {
-                                // First, try to find a service with "iMCP" in the endpoint description
+                                // First, try to find a service with "iCloudMCP" in the endpoint description
                                 let imcpServices = results.filter {
-                                    String(describing: $0.endpoint).contains("iMCP")
+                                    String(describing: $0.endpoint).contains("iCloudMCP")
                                 }
 
                                 let selectedService: NWBrowser.Result
 
                                 if !imcpServices.isEmpty {
-                                    // Prefer services with iMCP in the description
+                                    // Prefer services with iCloudMCP in the description
                                     selectedService = imcpServices.first!
                                     await log.info(
-                                        "Selected iMCP service: \(selectedService.endpoint)"
+                                        "Selected iCloudMCP service: \(selectedService.endpoint)"
                                     )
                                 } else {
                                     // Fall back to the first available service
                                     selectedService = results.first!
                                     await log.info(
-                                        "No specific iMCP service found, using: \(selectedService.endpoint)"
+                                        "No specific iCloudMCP service found, using: \(selectedService.endpoint)"
                                     )
                                 }
 
