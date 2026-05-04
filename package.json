@@ -1,0 +1,23 @@
+{
+  "name": "icloudmcp",
+  "version": "1.0.0",
+  "description": "PlanVisualizer tooling for the iCloudMCP project",
+  "private": true,
+  "scripts": {
+    "plan:test": "jest --watchAll=false",
+    "plan:test:coverage": "jest --watchAll=false --coverage",
+    "plan:generate": "node tools/generate-plan.js",
+    "plan:cleanup": "bash scripts/cleanup-branches.sh",
+    "plan:cleanup:dry": "bash scripts/cleanup-branches.sh --dry-run",
+    "plan:migrate-config": "node tools/migrate-config.js",
+    "plan:migrate-config:dry": "node tools/migrate-config.js --dry-run"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.2.1",
+    "jest": "^30.3.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1"
+  }
+}
