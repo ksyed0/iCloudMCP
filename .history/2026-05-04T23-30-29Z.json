@@ -1,0 +1,1058 @@
+{
+  "generatedAt": "2026-05-04T23:30:29.050Z",
+  "commit": "4d6686a",
+  "data": {
+    "epics": [
+      {
+        "id": "EPIC-0001",
+        "title": "MCP Server Infrastructure & Transport",
+        "description": "Core Bonjour-based TCP server that hosts the MCP protocol, plus the icloudmcp-server CLI proxy binary that AI clients spawn. Together they form the invisible transport layer all service tools depend on.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": []
+      },
+      {
+        "id": "EPIC-0002",
+        "title": "Menu Bar Application Shell",
+        "description": "The macOS menu bar extra that owns the server lifecycle, presents the service toggle list, and provides access to settings and about screens.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0003",
+        "title": "Connection Approval & Client Security",
+        "description": "Per-connection approval flow that gates new client access behind user consent, with a persistent trusted-client allowlist stored in AppStorage.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0004",
+        "title": "Claude Desktop Integration",
+        "description": "One-click setup that writes the icloudmcp-server entry into claude_desktop_config.json, using security-scoped bookmarks to maintain persistent write access.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0005",
+        "title": "Calendar Service",
+        "description": "EventKit-backed tools for listing calendars, querying events with rich filters, and creating new events with alarms and recurrence.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0006",
+        "title": "Contacts Service",
+        "description": "CNContactStore-backed tools for reading personal contact info, searching contacts, and creating or updating contact records.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0007",
+        "title": "Capture Service",
+        "description": "ScreenCaptureKit and AVFoundation tools for taking screenshots, photos, and audio recordings, exposed as base64-encoded image/audio content.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0008",
+        "title": "Location & Maps Services",
+        "description": "CoreLocation tools for device position and geocoding, plus MapKit tools for place search, directions, ETA, exploration, and static map generation.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0009",
+        "title": "Messages Service",
+        "description": "Read-only access to the Messages app conversation history via direct SQLite access to chat.db, using a sandbox exception and security-scoped bookmark for persistent access.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0010",
+        "title": "Reminders & Shortcuts Services",
+        "description": "EventKit-backed reminders tools and an Shortcuts-runner for listing and executing user automations.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0011",
+        "title": "Weather & Utilities Services",
+        "description": "WeatherKit-backed weather forecast tools (conditionally compiled) and a minimal utilities service for system sounds.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": [
+          "EPIC-0001"
+        ]
+      },
+      {
+        "id": "EPIC-0012",
+        "title": "iCloudMCP Fork & Rebranding",
+        "description": "Fork the upstream iMCP project, rename all artefacts to iCloudMCP, update bundle identifiers and ownership references, and set up the PlanVisualizer toolchain for this repo.",
+        "releaseTarget": "MVP",
+        "status": "Complete",
+        "startDate": null,
+        "doneDate": null,
+        "dependencies": []
+      }
+    ],
+    "stories": [
+      {
+        "id": "US-0001",
+        "epicId": "EPIC-0001",
+        "title": "As an AI client, I want to discover and connect to an MCP server advertised over Bonjour, so that I can call macOS tools without hardcoded ports.",
+        "priority": "High",
+        "estimate": "L",
+        "status": "Complete",
+        "branch": "feature/US-0001-bonjour-mcp-server",
+        "acs": [
+          {
+            "id": "AC-0001",
+            "text": "ServerController advertises an NWListener on service type _mcp._tcp in the local. domain",
+            "done": true
+          },
+          {
+            "id": "AC-0002",
+            "text": "Multiple simultaneous client connections are supported via per-connection actors",
+            "done": true
+          },
+          {
+            "id": "AC-0003",
+            "text": "Incoming tool call requests are routed to the correct Service by tool name",
+            "done": true
+          },
+          {
+            "id": "AC-0004",
+            "text": "When the app is disabled, tool calls return an explicit error message rather than hanging",
+            "done": true
+          },
+          {
+            "id": "AC-0005",
+            "text": "The listener auto-restarts on port conflict (EADDRINUSE / NWError code 48) using a random port",
+            "done": true
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "id": "US-0002",
+        "epicId": "EPIC-0001",
+        "title": "As an AI client, I want to spawn a CLI binary that transparently bridges my stdio to the running iCloudMCP app, so that I do not need to manage TCP connections directly.",
+        "priority": "High",
+        "estimate": "L",
+        "status": "Complete",
+        "branch": "feature/US-0002-cli-stdio-proxy",
+        "acs": [
+          {
+            "id": "AC-0006",
+            "text": "The icloudmcp-server binary discovers the Bonjour service within 30 seconds or exits with a clear error",
+            "done": true
+          },
+          {
+            "id": "AC-0007",
+            "text": "All stdin bytes (non-whitespace-only) are forwarded to the TCP connection",
+            "done": true
+          },
+          {
+            "id": "AC-0008",
+            "text": "All network bytes are forwarded to stdout, reassembled on newline message boundaries",
+            "done": true
+          },
+          {
+            "id": "AC-0009",
+            "text": "MCP heartbeat messages (12-byte magic-prefixed frames) are silently filtered and not written to stdout",
+            "done": true
+          },
+          {
+            "id": "AC-0010",
+            "text": "On connection close (peer reset or cancel) the proxy exits cleanly rather than looping",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0003",
+        "epicId": "EPIC-0002",
+        "title": "As a user, I want a menu bar icon that lets me toggle the MCP server on/off and enable individual services, so that I control what data AI clients can access.",
+        "priority": "High",
+        "estimate": "M",
+        "status": "Complete",
+        "branch": "feature/US-0003-menu-bar-app",
+        "acs": [
+          {
+            "id": "AC-0011",
+            "text": "The menu bar icon shows distinct On/Off states matching the server enabled state",
+            "done": true
+          },
+          {
+            "id": "AC-0012",
+            "text": "A master toggle enables or disables the entire MCP server",
+            "done": true
+          },
+          {
+            "id": "AC-0013",
+            "text": "Each service has an individual toggle; disabling a service excludes its tools from the server",
+            "done": true
+          },
+          {
+            "id": "AC-0014",
+            "text": "The menu exposes \"Configure Claude Desktop\", \"Copy server command\", Settings, About, and Quit actions",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0004",
+        "epicId": "EPIC-0002",
+        "title": "As a user, I want a Settings window where I can review and remove trusted clients, so that I can revoke previously granted automatic access.",
+        "priority": "Medium",
+        "estimate": "S",
+        "status": "Complete",
+        "branch": "feature/US-0004-settings-window",
+        "acs": [
+          {
+            "id": "AC-0015",
+            "text": "Settings window lists all trusted client identifiers",
+            "done": true
+          },
+          {
+            "id": "AC-0016",
+            "text": "Individual clients can be removed via context menu or Delete key",
+            "done": true
+          },
+          {
+            "id": "AC-0017",
+            "text": "\"Remove All\" button with confirmation alert clears the entire trusted list",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0003"
+        ]
+      },
+      {
+        "id": "US-0005",
+        "epicId": "EPIC-0003",
+        "title": "As a user, I want a dialog to appear when an unknown client connects, so that I can allow or deny access before any tools are called.",
+        "priority": "High",
+        "estimate": "M",
+        "status": "Complete",
+        "branch": "feature/US-0005-connection-approval",
+        "acs": [
+          {
+            "id": "AC-0018",
+            "text": "An approval dialog appears for every client whose name is not in the trusted list",
+            "done": true
+          },
+          {
+            "id": "AC-0019",
+            "text": "The dialog shows the client name, Allow and Deny buttons, and an \"Always trust\" checkbox",
+            "done": true
+          },
+          {
+            "id": "AC-0020",
+            "text": "Approving with \"Always trust\" persists the client name to AppStorage so future connections skip the dialog",
+            "done": true
+          },
+          {
+            "id": "AC-0021",
+            "text": "Denying closes the connection immediately",
+            "done": true
+          },
+          {
+            "id": "AC-0022",
+            "text": "Concurrent connection attempts for the same client are queued and resolved together",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0006",
+        "epicId": "EPIC-0003",
+        "title": "As a user, I want to receive a notification when a client successfully connects to iCloudMCP, so that I am aware of active connections even when the menu is closed.",
+        "priority": "Low",
+        "estimate": "S",
+        "status": "Complete",
+        "branch": "feature/US-0006-connection-notification",
+        "acs": [
+          {
+            "id": "AC-0023",
+            "text": "A UNUserNotification fires when a new client connection is established and approved",
+            "done": true
+          },
+          {
+            "id": "AC-0024",
+            "text": "Notification permission is requested on first server start",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0005"
+        ]
+      },
+      {
+        "id": "US-0007",
+        "epicId": "EPIC-0004",
+        "title": "As a user, I want to click a menu item to automatically configure Claude Desktop to use iCloudMCP, so that I do not need to manually edit JSON.",
+        "priority": "High",
+        "estimate": "M",
+        "status": "Complete",
+        "branch": "feature/US-0007-claude-desktop-integration",
+        "acs": [
+          {
+            "id": "AC-0025",
+            "text": "\"Configure Claude Desktop\" shows an alert summarising the change before writing the config",
+            "done": true
+          },
+          {
+            "id": "AC-0026",
+            "text": "The icloudmcp-server entry is upserted into the mcpServers map without disturbing other entries",
+            "done": true
+          },
+          {
+            "id": "AC-0027",
+            "text": "The config is written using a security-scoped bookmark; an NSSavePanel fallback fires if no bookmark exists",
+            "done": true
+          },
+          {
+            "id": "AC-0028",
+            "text": "\"Copy server command to clipboard\" places the full icloudmcp-server path on the pasteboard",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0003"
+        ]
+      },
+      {
+        "id": "US-0008",
+        "epicId": "EPIC-0005",
+        "title": "As an AI assistant, I want to list calendars and fetch events with flexible filters, so that I can answer scheduling questions.",
+        "priority": "High",
+        "estimate": "M",
+        "status": "Complete",
+        "branch": "feature/US-0008-calendar-read",
+        "acs": [
+          {
+            "id": "AC-0029",
+            "text": "calendars_list returns all EKCalendar entries with title, source, color, and edit/subscribe flags",
+            "done": true
+          },
+          {
+            "id": "AC-0030",
+            "text": "events_fetch accepts start/end date ranges with lenient ISO 8601 parsing (date-only and datetime)",
+            "done": true
+          },
+          {
+            "id": "AC-0031",
+            "text": "events_fetch supports filtering by calendar name, text query, all-day, status, availability, hasAlarms, and isRecurring",
+            "done": true
+          },
+          {
+            "id": "AC-0032",
+            "text": "Calendar permission is checked before each read; an error is thrown if access is not granted",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0009",
+        "epicId": "EPIC-0005",
+        "title": "As an AI assistant, I want to create calendar events with alarms and availability settings, so that I can help users schedule commitments.",
+        "priority": "High",
+        "estimate": "M",
+        "status": "Complete",
+        "branch": "feature/US-0009-calendar-write",
+        "acs": [
+          {
+            "id": "AC-0033",
+            "text": "events_create supports title, start/end, calendar, location, notes, URL, isAllDay, and availability",
+            "done": true
+          },
+          {
+            "id": "AC-0034",
+            "text": "Alarms can be relative (minutes offset), absolute (datetime), or proximity-based (geo-fence enter/leave)",
+            "done": true
+          },
+          {
+            "id": "AC-0035",
+            "text": "All-day events are stored at local midnight with correct day boundaries",
+            "done": true
+          },
+          {
+            "id": "AC-0036",
+            "text": "The new event is persisted via EKEventStore and returned as the serialised Event value",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0008"
+        ]
+      },
+      {
+        "id": "US-0010",
+        "epicId": "EPIC-0006",
+        "title": "As an AI assistant, I want to look up the user's own contact card and search the address book, so that I can personalise responses and access contact details.",
+        "priority": "High",
+        "estimate": "M",
+        "status": "Complete",
+        "branch": "feature/US-0010-contacts-service",
+        "acs": [
+          {
+            "id": "AC-0037",
+            "text": "contacts_me fetches the unified \"me\" card with name, phones, emails, addresses, birthday, and relations",
+            "done": true
+          },
+          {
+            "id": "AC-0038",
+            "text": "contacts_search accepts name, phone, and/or email predicates combined with AND logic",
+            "done": true
+          },
+          {
+            "id": "AC-0039",
+            "text": "contacts_create persists a new CNMutableContact with at minimum a given name",
+            "done": true
+          },
+          {
+            "id": "AC-0040",
+            "text": "contacts_update fetches the contact by identifier, applies partial field updates, and saves via CNSaveRequest",
+            "done": true
+          },
+          {
+            "id": "AC-0041",
+            "text": "All contact operations run on a utility Task to avoid blocking the main actor",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0011",
+        "epicId": "EPIC-0007",
+        "title": "As an AI assistant, I want to capture screenshots, photos, and audio recordings from the user's device, so that I can analyse visual and audio content.",
+        "priority": "High",
+        "estimate": "L",
+        "status": "Complete",
+        "branch": "feature/US-0011-capture-service",
+        "acs": [
+          {
+            "id": "AC-0042",
+            "text": "capture_take_screenshot captures a screen, window, or application and returns a base64-encoded PNG",
+            "done": true
+          },
+          {
+            "id": "AC-0043",
+            "text": "capture_take_picture captures a still image from the default camera",
+            "done": true
+          },
+          {
+            "id": "AC-0044",
+            "text": "capture_record_audio captures audio for a specified duration and returns base64-encoded audio data",
+            "done": true
+          },
+          {
+            "id": "AC-0045",
+            "text": "Screen recording permission is requested via ScreenCaptureKit; camera/microphone permissions via AVFoundation",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0012",
+        "epicId": "EPIC-0008",
+        "title": "As an AI assistant, I want to get the device's current location and convert between addresses and coordinates, so that I can answer location-aware questions.",
+        "priority": "High",
+        "estimate": "S",
+        "status": "Complete",
+        "branch": "feature/US-0012-location-service",
+        "acs": [
+          {
+            "id": "AC-0046",
+            "text": "location_current returns latitude, longitude, and accuracy after requesting When-In-Use authorisation",
+            "done": true
+          },
+          {
+            "id": "AC-0047",
+            "text": "location_geocode converts a free-text address string to one or more coordinate results",
+            "done": true
+          },
+          {
+            "id": "AC-0048",
+            "text": "location_reverse-geocode converts coordinates to a human-readable placemark",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0013",
+        "epicId": "EPIC-0008",
+        "title": "As an AI assistant, I want to search for places, get turn-by-turn directions, estimate travel time, and generate static map images, so that I can assist with navigation and exploration.",
+        "priority": "High",
+        "estimate": "L",
+        "status": "Complete",
+        "branch": "feature/US-0013-maps-service",
+        "acs": [
+          {
+            "id": "AC-0049",
+            "text": "maps_search returns ranked place results from MKLocalSearch for a given query and optional region",
+            "done": true
+          },
+          {
+            "id": "AC-0050",
+            "text": "maps_directions returns step-by-step route instructions for driving, walking, or transit",
+            "done": true
+          },
+          {
+            "id": "AC-0051",
+            "text": "maps_explore uses MKLocalSearchCompleter to return typeahead suggestions for a partial query",
+            "done": true
+          },
+          {
+            "id": "AC-0052",
+            "text": "maps_eta returns estimated travel time between two points for the requested transport type",
+            "done": true
+          },
+          {
+            "id": "AC-0053",
+            "text": "maps_generate returns a base64-encoded PNG static map for given coordinates, span, and options",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0012"
+        ]
+      },
+      {
+        "id": "US-0014",
+        "epicId": "EPIC-0009",
+        "title": "As an AI assistant, I want to search Messages conversation history by participant, date range, and content, so that I can answer questions about past conversations.",
+        "priority": "High",
+        "estimate": "M",
+        "status": "Complete",
+        "branch": "feature/US-0014-messages-service",
+        "acs": [
+          {
+            "id": "AC-0054",
+            "text": "messages_fetch filters by participant handles (E.164 phone or email), date range, text query, and limit",
+            "done": true
+          },
+          {
+            "id": "AC-0055",
+            "text": "The service first attempts direct access to the default chat.db path; falls back to a stored bookmark",
+            "done": true
+          },
+          {
+            "id": "AC-0056",
+            "text": "If neither path works, an alert and NSOpenPanel guide the user to select the database file manually",
+            "done": true
+          },
+          {
+            "id": "AC-0057",
+            "text": "A security-scoped bookmark is stored in UserDefaults after manual selection for future launches",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0015",
+        "epicId": "EPIC-0010",
+        "title": "As an AI assistant, I want to list reminder lists and fetch or create reminders, so that I can help users manage tasks.",
+        "priority": "Medium",
+        "estimate": "S",
+        "status": "Complete",
+        "branch": "feature/US-0015-reminders-service",
+        "acs": [
+          {
+            "id": "AC-0058",
+            "text": "reminders_lists returns all EKCalendar reminder lists with title and colour",
+            "done": true
+          },
+          {
+            "id": "AC-0059",
+            "text": "reminders_fetch returns incomplete or completed reminders filtered by list and date range",
+            "done": true
+          },
+          {
+            "id": "AC-0060",
+            "text": "reminders_create saves a new EKReminder with title, due date, notes, and optional priority",
+            "done": true
+          },
+          {
+            "id": "AC-0061",
+            "text": "Reminders permission (fullAccessToReminders) is requested on activate",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0016",
+        "epicId": "EPIC-0010",
+        "title": "As an AI assistant, I want to list and run Shortcuts automations, so that I can trigger complex user-defined workflows.",
+        "priority": "Medium",
+        "estimate": "S",
+        "status": "Complete",
+        "branch": "feature/US-0016-shortcuts-service",
+        "acs": [
+          {
+            "id": "AC-0062",
+            "text": "shortcuts_list returns the names of available Shortcuts automations",
+            "done": true
+          },
+          {
+            "id": "AC-0063",
+            "text": "shortcuts_run executes a named Shortcut and returns its output",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0017",
+        "epicId": "EPIC-0011",
+        "title": "As an AI assistant, I want to retrieve current conditions and multi-day/hourly/minute-by-minute forecasts, so that I can answer weather questions.",
+        "priority": "Medium",
+        "estimate": "M",
+        "status": "Complete",
+        "branch": "feature/US-0017-weather-service",
+        "acs": [
+          {
+            "id": "AC-0064",
+            "text": "weather_current returns conditions, temperature, humidity, wind, UV index, and visibility",
+            "done": true
+          },
+          {
+            "id": "AC-0065",
+            "text": "weather_daily returns a multi-day forecast with high/low temps and precipitation probability",
+            "done": true
+          },
+          {
+            "id": "AC-0066",
+            "text": "weather_hourly returns an hour-by-hour breakdown for the requested period",
+            "done": true
+          },
+          {
+            "id": "AC-0067",
+            "text": "weather_minute returns minute-by-minute precipitation data for the next hour",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0018",
+        "epicId": "EPIC-0011",
+        "title": "As an AI assistant, I want to play a system sound, so that I can give the user an audible notification.",
+        "priority": "Low",
+        "estimate": "S",
+        "status": "Complete",
+        "branch": "feature/US-0018-utilities-service",
+        "acs": [
+          {
+            "id": "AC-0068",
+            "text": "utilities_beep plays a named NSSound from the system sound library",
+            "done": true
+          },
+          {
+            "id": "AC-0069",
+            "text": "An enum of valid sound names is exposed in the tool input schema",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0001"
+        ]
+      },
+      {
+        "id": "US-0019",
+        "epicId": "EPIC-0012",
+        "title": "As the project owner, I want all iMCP references renamed to iCloudMCP throughout the codebase, so that the fork has a distinct identity and does not conflict with the upstream app.",
+        "priority": "High",
+        "estimate": "S",
+        "status": "Complete",
+        "branch": "main",
+        "acs": [
+          {
+            "id": "AC-0070",
+            "text": "All user-visible strings (menu bar title, About window, dialogs) read \"iCloudMCP\"",
+            "done": true
+          },
+          {
+            "id": "AC-0071",
+            "text": "Bundle identifiers updated to ksyed0.iCloudMCP and ksyed0.icloudmcp-server",
+            "done": true
+          },
+          {
+            "id": "AC-0072",
+            "text": "UserDefaults keys updated to ksyed0.iCloudMCP.* prefix",
+            "done": true
+          },
+          {
+            "id": "AC-0073",
+            "text": "Xcode project and scheme renamed from iMCP.xcodeproj to iCloudMCP.xcodeproj",
+            "done": true
+          },
+          {
+            "id": "AC-0074",
+            "text": "CLI binary target renamed from imcp-server to icloudmcp-server",
+            "done": true
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "id": "US-0020",
+        "epicId": "EPIC-0012",
+        "title": "As the project team, I want PlanVisualizer installed and configured, so that we have automated dashboard tracking for costs, stories, and bugs.",
+        "priority": "Medium",
+        "estimate": "S",
+        "status": "Complete",
+        "branch": "main",
+        "acs": [
+          {
+            "id": "AC-0075",
+            "text": "plan-visualizer.config.json references project name iCloudMCP and repo ksyed0/iCloudMCP",
+            "done": true
+          },
+          {
+            "id": "AC-0076",
+            "text": "npm run plan:test passes all 757 tests",
+            "done": true
+          },
+          {
+            "id": "AC-0077",
+            "text": ".claude/settings.json includes the capture-cost.js Stop hook",
+            "done": true
+          },
+          {
+            "id": "AC-0078",
+            "text": "AGENTS.md references plan_visualizer.md for document format requirements",
+            "done": true
+          }
+        ],
+        "dependencies": [
+          "US-0019"
+        ]
+      }
+    ],
+    "bugs": [
+      {
+        "id": "BUG-0001",
+        "title": "Bonjour endpoint filter may not match when device name differs from app name",
+        "severity": "Medium",
+        "relatedStory": "US-0002",
+        "relatedTask": "TASK-0002",
+        "status": "Open",
+        "fixBranch": "bugfix/BUG-0001-bonjour-endpoint-filter",
+        "lessonEncoded": "No",
+        "estimatedCostUsd": 0
+      },
+      {
+        "id": "BUG-0002",
+        "title": "CLI network-read timeout triggers on slow tool calls (screenshot, audio recording)",
+        "severity": "High",
+        "relatedStory": "US-0002",
+        "relatedTask": "TASK-0002",
+        "status": "Open",
+        "fixBranch": "bugfix/BUG-0002-cli-network-timeout",
+        "lessonEncoded": "No",
+        "estimatedCostUsd": 0
+      },
+      {
+        "id": "BUG-0003",
+        "title": "Weather tools silently absent in builds without WeatherKit entitlement",
+        "severity": "Low",
+        "relatedStory": "US-0017",
+        "relatedTask": "TASK-0017",
+        "status": "Open",
+        "fixBranch": "bugfix/BUG-0003-weather-missing-capability-ui",
+        "lessonEncoded": "No",
+        "estimatedCostUsd": 0
+      },
+      {
+        "id": "BUG-0004",
+        "title": "Messages activation open-panel is non-recoverable if user cancels",
+        "severity": "Medium",
+        "relatedStory": "US-0014",
+        "relatedTask": "TASK-0014",
+        "status": "Open",
+        "fixBranch": "bugfix/BUG-0004-messages-activation-recovery",
+        "lessonEncoded": "No",
+        "estimatedCostUsd": 0
+      },
+      {
+        "id": "BUG-0005",
+        "title": "Port conflict recovery (EADDRINUSE) disconnects existing CLI clients",
+        "severity": "Medium",
+        "relatedStory": "US-0001",
+        "relatedTask": "TASK-0001",
+        "status": "Open",
+        "fixBranch": "bugfix/BUG-0005-port-conflict-graceful-recovery",
+        "lessonEncoded": "No",
+        "estimatedCostUsd": 0
+      }
+    ],
+    "costs": {
+      "US-0001": {
+        "projectedUsd": 1600,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0002": {
+        "projectedUsd": 1600,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0003": {
+        "projectedUsd": 800,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0004": {
+        "projectedUsd": 400,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0005": {
+        "projectedUsd": 800,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0006": {
+        "projectedUsd": 400,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0007": {
+        "projectedUsd": 800,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0008": {
+        "projectedUsd": 800,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0009": {
+        "projectedUsd": 800,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0010": {
+        "projectedUsd": 800,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0011": {
+        "projectedUsd": 1600,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0012": {
+        "projectedUsd": 400,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0013": {
+        "projectedUsd": 1600,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0014": {
+        "projectedUsd": 800,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0015": {
+        "projectedUsd": 400,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0016": {
+        "projectedUsd": 400,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0017": {
+        "projectedUsd": 800,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0018": {
+        "projectedUsd": 400,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0019": {
+        "projectedUsd": 400,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "US-0020": {
+        "projectedUsd": 400,
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "_totals": {
+        "costUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "_bugs": {
+        "BUG-0001": {
+          "costUsd": 0,
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessions": 0,
+          "isEstimated": false,
+          "projectedUsd": 400
+        },
+        "BUG-0002": {
+          "costUsd": 0,
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessions": 0,
+          "isEstimated": false,
+          "projectedUsd": 800
+        },
+        "BUG-0003": {
+          "costUsd": 0,
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessions": 0,
+          "isEstimated": false,
+          "projectedUsd": 400
+        },
+        "BUG-0004": {
+          "costUsd": 0,
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessions": 0,
+          "isEstimated": false,
+          "projectedUsd": 400
+        },
+        "BUG-0005": {
+          "costUsd": 0,
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "sessions": 0,
+          "isEstimated": false,
+          "projectedUsd": 400
+        },
+        "_totals": {
+          "costUsd": 0,
+          "inputTokens": 0,
+          "outputTokens": 0
+        }
+      }
+    },
+    "coverage": {
+      "lines": 0,
+      "statements": 0,
+      "functions": 0,
+      "branches": 0,
+      "overall": 0,
+      "meetsTarget": false,
+      "available": false
+    },
+    "lessons": [],
+    "testCases": []
+  }
+}

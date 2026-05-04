@@ -1011,7 +1011,158 @@
       "notes": ""
     }
   ],
-  "testCases": [],
+  "testCases": [
+    {
+      "id": "TC-0001",
+      "title": "calendars_list returns at least one calendar",
+      "relatedStory": "US-0008",
+      "relatedTask": "TASK-0008",
+      "relatedAC": "AC-0029",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0002",
+      "title": "events_fetch with no arguments returns events for the next 7 days",
+      "relatedStory": "US-0008",
+      "relatedTask": "TASK-0008",
+      "relatedAC": "AC-0030",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0003",
+      "title": "events_fetch filters correctly by calendar name",
+      "relatedStory": "US-0008",
+      "relatedTask": "TASK-0008",
+      "relatedAC": "AC-0031",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0004",
+      "title": "events_create with relative alarm saves and returns the new event",
+      "relatedStory": "US-0009",
+      "relatedTask": "TASK-0009",
+      "relatedAC": "AC-0034",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0005",
+      "title": "contacts_me returns the user's own card",
+      "relatedStory": "US-0010",
+      "relatedTask": "TASK-0010",
+      "relatedAC": "AC-0037",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0006",
+      "title": "contacts_search by name returns matching results",
+      "relatedStory": "US-0010",
+      "relatedTask": "TASK-0010",
+      "relatedAC": "AC-0038",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0007",
+      "title": "capture_take_screenshot returns a non-empty base64 PNG string",
+      "relatedStory": "US-0011",
+      "relatedTask": "TASK-0011",
+      "relatedAC": "AC-0042",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0008",
+      "title": "location_current returns latitude and longitude within expected range",
+      "relatedStory": "US-0012",
+      "relatedTask": "TASK-0012",
+      "relatedAC": "AC-0046",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0009",
+      "title": "maps_search returns results for a known landmark",
+      "relatedStory": "US-0013",
+      "relatedTask": "TASK-0013",
+      "relatedAC": "AC-0049",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0010",
+      "title": "messages_fetch returns messages from a known participant",
+      "relatedStory": "US-0014",
+      "relatedTask": "TASK-0014",
+      "relatedAC": "AC-0054",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0011",
+      "title": "Disabling iCloudMCP returns error on tool call rather than hanging",
+      "relatedStory": "US-0003",
+      "relatedTask": "TASK-0003",
+      "relatedAC": "AC-0004",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0012",
+      "title": "Unknown client triggers approval dialog",
+      "relatedStory": "US-0005",
+      "relatedTask": "TASK-0005",
+      "relatedAC": "AC-0018",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0013",
+      "title": "Trusted client reconnects without approval dialog",
+      "relatedStory": "US-0005",
+      "relatedTask": "TASK-0005",
+      "relatedAC": "AC-0020",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0014",
+      "title": "Configure Claude Desktop writes iCloudMCP entry without disturbing other entries",
+      "relatedStory": "US-0007",
+      "relatedTask": "TASK-0007",
+      "relatedAC": "AC-0026",
+      "type": "Functional",
+      "status": "Not Run",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0015",
+      "title": "CLI exits cleanly when app is not running (30s timeout)",
+      "relatedStory": "US-0002",
+      "relatedTask": "TASK-0002",
+      "relatedAC": "AC-0006",
+      "type": "Negative",
+      "status": "Not Run",
+      "defect": "None"
+    }
+  ],
   "bugs": [
     {
       "id": "BUG-0001",
@@ -1252,18 +1403,18 @@
       "isAtRisk": true
     },
     "US-0002": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": true,
       "isAtRisk": true
     },
     "US-0003": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0004": {
       "missingTCs": true,
@@ -1273,11 +1424,11 @@
       "isAtRisk": true
     },
     "US-0005": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0006": {
       "missingTCs": true,
@@ -1287,60 +1438,60 @@
       "isAtRisk": true
     },
     "US-0007": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0008": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0009": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0010": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0011": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0012": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0013": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0014": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0015": {
       "missingTCs": true,
@@ -1398,11 +1549,42 @@
     "meetsTarget": false,
     "available": false
   },
-  "recentActivity": [],
-  "lessons": [],
-  "generatedAt": "2026-05-04T23:30:28.957Z",
-  "commitSha": "4d6686a",
-  "buildNumber": "3",
+  "recentActivity": [
+    {
+      "sessionNum": 1,
+      "date": "2026-05-04",
+      "summary": "Installed PlanVisualizer v2.1.0 from `ksyed0/PlanVisualizer` into repo root; all 757 tests pass; Forked and renamed iMCP → iCloudMCP across all Swift sources, pbxproj, xcscheme, plists, README, and CLI binary; Reverse-engineered 12 epics, 20 stories (78 ACs), 20 tasks, and 5 bugs from codebase into RELEASE_PLAN.md and BUGS.md"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "L-0001",
+      "title": "Always add a LICENSE file (no extension) alongside LICENSE.md",
+      "rule": "Create a bare `LICENSE` file (no extension) in addition to `LICENSE.md`. GitHub's license detection only triggers on `LICENSE`, `LICENSE.txt`, or `LICENSE.md` at the repo root — but only the no-extension form reliably surfaces the license badge on the repo page.\n_Discovered when setting the MIT license: LICENSE.md existed but GitHub did not show the license badge until a bare LICENSE file was added._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
+    },
+    {
+      "id": "L-0002",
+      "title": "PlanVisualizer install script does not copy all orchestrator files",
+      "rule": "After running `scripts/install.sh`, manually copy `orchestrator/file-lock.js`, `orchestrator/spawn.js`, `orchestrator/git-safe.js`, and `orchestrator/adapters/` from the PlanVisualizer source. The install script only copies `orchestrator/atomic-write.js`, causing test suite failures on the first run.\n_Discovered during PlanVisualizer installation into iCloudMCP: 8 test suites failed with MODULE_NOT_FOUND errors until the missing orchestrator files were copied manually._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
+    },
+    {
+      "id": "L-0003",
+      "title": "Bonjour service name is not set explicitly; CLI filter is fragile",
+      "rule": "When using `NWListener.Service(type:domain:)` without a `name:` parameter, the advertised Bonjour service name defaults to the device hostname, not the app name. Any filter that checks for the app name in `String(describing: endpoint)` will fail on machines whose hostname differs from the expected string. Always set an explicit `name:` or filter on service type alone.\n_Identified during codebase analysis (BUG-0001): `CLI/main.swift` filters by `.contains(\"iCloudMCP\")` which is unreliable._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
+    }
+  ],
+  "generatedAt": "2026-05-04T23:40:11.390Z",
+  "commitSha": "a83c28a",
+  "buildNumber": "6",
   "branch": "main",
   "sessionTimeline": [],
   "costHistory": {},
@@ -1594,5 +1776,61 @@
     "hasBudget": false
   },
   "completion": null,
-  "trends": null
+  "trends": {
+    "dates": [
+      "2026-05-04T23:30:29.050Z",
+      "2026-05-04T23:40:11.469Z"
+    ],
+    "doneCounts": [
+      0,
+      0
+    ],
+    "totalStories": [
+      20,
+      20
+    ],
+    "aiCosts": [
+      0,
+      0
+    ],
+    "coverage": [
+      null,
+      null
+    ],
+    "velocity": [
+      0,
+      0
+    ],
+    "openBugs": [
+      5,
+      5
+    ],
+    "atRisk": [
+      0,
+      0
+    ],
+    "inputTokens": [
+      0,
+      0
+    ],
+    "outputTokens": [
+      0,
+      0
+    ],
+    "avgRisk": [
+      1.2200000000000002,
+      1.2200000000000002
+    ],
+    "velocityByWeek": {
+      "labels": [
+        "2026-W19"
+      ],
+      "points": [
+        0
+      ],
+      "rollingAvg": [
+        0
+      ]
+    }
+  }
 }
