@@ -374,19 +374,7 @@ Additional credits from the original project:
 
 ## License
 
-iCloudMCP is available under the **MIT License** — the same license as the upstream
-[iMCP](https://github.com/mattt/iMCP) project from which it is forked.
-
-The MIT License was chosen because:
-- It is **required**: the upstream iMCP project is MIT-licensed, and forking it
-  obligates this project to carry the same license and copyright notice.
-- It is **appropriate**: a developer tool that provides local macOS integrations
-  benefits from permissive licensing so other projects can freely build on it.
-- It is **simple**: MIT imposes only one obligation — preserve the copyright notice —
-  which is already done in `LICENSE.md`.
-
-See `LICENSE.md` for the full text, including both the original copyright (Mattt, 2025)
-and the fork copyright (Kamal Syed, 2026).
+iCloudMCP is available under the [MIT License](LICENSE). See the `LICENSE` file for the full text.
 
 ## Legal
 
