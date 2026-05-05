@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loopwork-ai/eventsource.git",
       "state" : {
-        "revision" : "07957602bb99a5355c810187e66e6ce378a1057d",
-        "version" : "1.1.1"
+        "revision" : "a3a85a85214caf642abaa96ae664e4c772a59f6e",
+        "version" : "1.4.1"
       }
     },
     {
