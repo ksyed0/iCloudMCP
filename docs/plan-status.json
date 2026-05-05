@@ -139,6 +139,18 @@
       "startDate": null,
       "doneDate": null,
       "dependencies": []
+    },
+    {
+      "id": "EPIC-0013",
+      "title": "CI/CD Pipeline & Developer Tooling",
+      "description": "Full CI pipeline enforcing lint, test coverage, Swift build, commit message format, and PR hygiene. Includes automated release workflow, branch protection with code-owner gating, Dependabot, and GitHub secret scanning.",
+      "releaseTarget": "MVP",
+      "status": "Complete",
+      "startDate": null,
+      "doneDate": null,
+      "dependencies": [
+        "EPIC-0012"
+      ]
     }
   ],
   "stories": [
@@ -807,6 +819,147 @@
       "dependencies": [
         "US-0019"
       ]
+    },
+    {
+      "id": "US-0021",
+      "epicId": "EPIC-0013",
+      "title": "As a developer, I want automated lint and test checks to run on every PR, so that regressions and style violations are caught before code reaches develop or main.",
+      "priority": "High",
+      "estimate": "M",
+      "status": "Complete",
+      "branch": "feature/US-0021-ci-pipeline",
+      "acs": [
+        {
+          "id": "AC-0079",
+          "text": "ESLint runs on all PRs to main and develop; merge is blocked on lint errors",
+          "done": true
+        },
+        {
+          "id": "AC-0080",
+          "text": "Jest runs with --coverage; merge blocked if lines, functions, or statements fall below 80%",
+          "done": true
+        },
+        {
+          "id": "AC-0081",
+          "text": "SwiftLint strict runs against App/ and CLI/ Swift sources",
+          "done": true
+        },
+        {
+          "id": "AC-0082",
+          "text": "Xcode Debug build is verified on a macOS-15 runner on every PR",
+          "done": true
+        },
+        {
+          "id": "AC-0083",
+          "text": "All four checks are required status checks on both main and develop",
+          "done": true
+        }
+      ],
+      "dependencies": [
+        "US-0020"
+      ]
+    },
+    {
+      "id": "US-0022",
+      "epicId": "EPIC-0013",
+      "title": "As the project owner, I want branch protection rules and CODEOWNERS so that only I can approve PRs and no one can push directly to main or develop.",
+      "priority": "High",
+      "estimate": "S",
+      "status": "Complete",
+      "branch": "feature/US-0022-branch-protection",
+      "acs": [
+        {
+          "id": "AC-0084",
+          "text": "main and develop both require at least one approved PR before merge",
+          "done": true
+        },
+        {
+          "id": "AC-0085",
+          "text": ".github/CODEOWNERS assigns * @ksyed0; require_code_owner_reviews is true on both branches",
+          "done": true
+        },
+        {
+          "id": "AC-0086",
+          "text": "Stale reviews are dismissed when new commits are pushed to an open PR",
+          "done": true
+        },
+        {
+          "id": "AC-0087",
+          "text": "Force push and branch deletion are disabled on both protected branches",
+          "done": true
+        },
+        {
+          "id": "AC-0088",
+          "text": "enforce_admins is false, giving the owner an override path",
+          "done": true
+        }
+      ],
+      "dependencies": [
+        "US-0021"
+      ]
+    },
+    {
+      "id": "US-0023",
+      "epicId": "EPIC-0013",
+      "title": "As a release engineer, I want a tag-triggered workflow that builds, notarizes, and publishes a draft GitHub Release, so that releases are reproducible and do not require a manual Xcode export.",
+      "priority": "Medium",
+      "estimate": "M",
+      "status": "Complete",
+      "branch": "feature/US-0023-release-workflow",
+      "acs": [
+        {
+          "id": "AC-0089",
+          "text": "Workflow triggers on v* semver tags pushed to any branch",
+          "done": true
+        },
+        {
+          "id": "AC-0090",
+          "text": "Developer ID signing certificate is imported from APPLE_CERTIFICATE secret into an ephemeral keychain, cleaned up in an always() step",
+          "done": true
+        },
+        {
+          "id": "AC-0091",
+          "text": "Scripts/release.sh runs the archive, notarize, and export phases",
+          "done": true
+        },
+        {
+          "id": "AC-0092",
+          "text": "A draft GitHub Release is created with the notarized .zip; draft status requires owner to publish",
+          "done": true
+        }
+      ],
+      "dependencies": [
+        "US-0021"
+      ]
+    },
+    {
+      "id": "US-0024",
+      "epicId": "EPIC-0013",
+      "title": "As a developer, I want commit message linting, PR size warnings, Dependabot, and secret scanning so that code hygiene and supply-chain security are enforced automatically.",
+      "priority": "Medium",
+      "estimate": "S",
+      "status": "Complete",
+      "branch": "feature/US-0024-repo-hygiene",
+      "acs": [
+        {
+          "id": "AC-0093",
+          "text": "commitlint enforces conventional commit format (feat/fix/chore/docs/refactor/perf/style/test/ci/build/revert) on all PR commits",
+          "done": true
+        },
+        {
+          "id": "AC-0094",
+          "text": "PR size check posts a sticky warning comment at >500 changed lines; hard-fails the check at >1500 lines",
+          "done": true
+        },
+        {
+          "id": "AC-0095",
+          "text": "Dependabot runs weekly for npm and Swift PM packages, targeting develop",
+          "done": true
+        }
+      ],
+      "dependencies": [
+        "US-0021"
+      ]
     }
   ],
   "tasks": [
@@ -1008,6 +1161,46 @@
       "assignee": "Agent",
       "status": "Done",
       "branch": "main",
+      "notes": ""
+    },
+    {
+      "id": "TASK-0021",
+      "storyId": "US-0021",
+      "title": "Create .github/workflows/ci.yml with ESLint, Jest coverage, SwiftLint, and Xcode build jobs",
+      "type": "Infra",
+      "assignee": "Agent",
+      "status": "Done",
+      "branch": "feature/US-0021-ci-pipeline",
+      "notes": ""
+    },
+    {
+      "id": "TASK-0022",
+      "storyId": "US-0022",
+      "title": "Create .github/CODEOWNERS and update branch protection via GitHub API",
+      "type": "Infra",
+      "assignee": "Agent",
+      "status": "Done",
+      "branch": "feature/US-0022-branch-protection",
+      "notes": ""
+    },
+    {
+      "id": "TASK-0023",
+      "storyId": "US-0023",
+      "title": "Create .github/workflows/release.yml with code signing, notarization, and gh release create",
+      "type": "Infra",
+      "assignee": "Agent",
+      "status": "Done",
+      "branch": "feature/US-0023-release-workflow",
+      "notes": "Requires 7 secrets to be configured in repo Settings → Secrets → Actions before first use"
+    },
+    {
+      "id": "TASK-0024",
+      "storyId": "US-0024",
+      "title": "Add commitlint.config.js, pr-size.yml, dependabot.yml, and enable security scanning via API",
+      "type": "Infra",
+      "assignee": "Agent",
+      "status": "Done",
+      "branch": "feature/US-0024-repo-hygiene",
       "notes": ""
     }
   ],
@@ -1341,6 +1534,30 @@
       "inputTokens": 0,
       "outputTokens": 0
     },
+    "US-0021": {
+      "projectedUsd": 800,
+      "costUsd": 0,
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "US-0022": {
+      "projectedUsd": 400,
+      "costUsd": 0,
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "US-0023": {
+      "projectedUsd": 800,
+      "costUsd": 0,
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "US-0024": {
+      "projectedUsd": 400,
+      "costUsd": 0,
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
     "_totals": {
       "costUsd": 0,
       "inputTokens": 0,
@@ -1534,6 +1751,34 @@
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": true
+    },
+    "US-0021": {
+      "missingTCs": true,
+      "noBranch": false,
+      "failedTCNoBug": false,
+      "openCriticalBug": false,
+      "isAtRisk": true
+    },
+    "US-0022": {
+      "missingTCs": true,
+      "noBranch": false,
+      "failedTCNoBug": false,
+      "openCriticalBug": false,
+      "isAtRisk": true
+    },
+    "US-0023": {
+      "missingTCs": true,
+      "noBranch": false,
+      "failedTCNoBug": false,
+      "openCriticalBug": false,
+      "isAtRisk": true
+    },
+    "US-0024": {
+      "missingTCs": true,
+      "noBranch": false,
+      "failedTCNoBug": false,
+      "openCriticalBug": false,
+      "isAtRisk": true
     }
   },
   "risk": {
@@ -1582,10 +1827,10 @@
       "bugIds": []
     }
   ],
-  "generatedAt": "2026-05-04T23:40:11.390Z",
-  "commitSha": "a83c28a",
-  "buildNumber": "6",
-  "branch": "main",
+  "generatedAt": "2026-05-05T00:09:44.141Z",
+  "commitSha": "15de620",
+  "buildNumber": "10",
+  "branch": "develop",
   "sessionTimeline": [],
   "costHistory": {},
   "deltaSpend": null,
@@ -1663,7 +1908,7 @@
   "budget": {
     "totalBudget": null,
     "totalSpent": 0,
-    "totalProjected": 16000,
+    "totalProjected": 18400,
     "percentUsed": null,
     "burnRate": 0,
     "daysRemaining": null,
@@ -1771,6 +2016,14 @@
         "spent": 0,
         "remaining": 0,
         "percentUsed": null
+      },
+      {
+        "id": "EPIC-0013",
+        "title": "CI/CD Pipeline & Developer Tooling",
+        "budget": 0,
+        "spent": 0,
+        "remaining": 0,
+        "percentUsed": null
       }
     ],
     "hasBudget": false
@@ -1779,47 +2032,69 @@
   "trends": {
     "dates": [
       "2026-05-04T23:30:29.050Z",
-      "2026-05-04T23:40:11.469Z"
+      "2026-05-04T23:40:11.469Z",
+      "2026-05-05T00:06:26.092Z",
+      "2026-05-05T00:09:44.234Z"
     ],
     "doneCounts": [
+      0,
+      0,
       0,
       0
     ],
     "totalStories": [
       20,
-      20
+      20,
+      20,
+      24
     ],
     "aiCosts": [
+      0,
+      0,
       0,
       0
     ],
     "coverage": [
       null,
+      null,
+      null,
       null
     ],
     "velocity": [
+      0,
+      0,
       0,
       0
     ],
     "openBugs": [
       5,
+      5,
+      5,
       5
     ],
     "atRisk": [
+      0,
+      0,
       0,
       0
     ],
     "inputTokens": [
       0,
+      0,
+      0,
       0
     ],
     "outputTokens": [
+      0,
+      0,
       0,
       0
     ],
     "avgRisk": [
       1.2200000000000002,
-      1.2200000000000002
+      1.2200000000000002,
+      1.2200000000000002,
+      1.2000000000000004
     ],
     "velocityByWeek": {
       "labels": [

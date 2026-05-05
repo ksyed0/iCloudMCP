@@ -581,3 +581,106 @@ Status: Done
 Branch: main
 Notes:
 ```
+
+---
+
+```
+EPIC-0013: CI/CD Pipeline & Developer Tooling
+Description: Full CI pipeline enforcing lint, test coverage, Swift build, commit message format, and PR hygiene. Includes automated release workflow, branch protection with code-owner gating, Dependabot, and GitHub secret scanning.
+Release Target: MVP
+Status: Complete
+Dependencies: EPIC-0012
+```
+
+```
+US-0021 (EPIC-0013): As a developer, I want automated lint and test checks to run on every PR, so that regressions and style violations are caught before code reaches develop or main.
+Priority: High
+Estimate: M
+Status: Complete
+Branch: feature/US-0021-ci-pipeline
+Dependencies: US-0020
+Acceptance Criteria:
+  - [x] AC-0079: ESLint runs on all PRs to main and develop; merge is blocked on lint errors
+  - [x] AC-0080: Jest runs with --coverage; merge blocked if lines, functions, or statements fall below 80%
+  - [x] AC-0081: SwiftLint strict runs against App/ and CLI/ Swift sources
+  - [x] AC-0082: Xcode Debug build is verified on a macOS-15 runner on every PR
+  - [x] AC-0083: All four checks are required status checks on both main and develop
+```
+
+```
+TASK-0021 (US-0021): Create .github/workflows/ci.yml with ESLint, Jest coverage, SwiftLint, and Xcode build jobs
+Type: Infra
+Assignee: Agent
+Status: Done
+Branch: feature/US-0021-ci-pipeline
+Notes:
+```
+
+```
+US-0022 (EPIC-0013): As the project owner, I want branch protection rules and CODEOWNERS so that only I can approve PRs and no one can push directly to main or develop.
+Priority: High
+Estimate: S
+Status: Complete
+Branch: feature/US-0022-branch-protection
+Dependencies: US-0021
+Acceptance Criteria:
+  - [x] AC-0084: main and develop both require at least one approved PR before merge
+  - [x] AC-0085: .github/CODEOWNERS assigns * @ksyed0; require_code_owner_reviews is true on both branches
+  - [x] AC-0086: Stale reviews are dismissed when new commits are pushed to an open PR
+  - [x] AC-0087: Force push and branch deletion are disabled on both protected branches
+  - [x] AC-0088: enforce_admins is false, giving the owner an override path
+```
+
+```
+TASK-0022 (US-0022): Create .github/CODEOWNERS and update branch protection via GitHub API
+Type: Infra
+Assignee: Agent
+Status: Done
+Branch: feature/US-0022-branch-protection
+Notes:
+```
+
+```
+US-0023 (EPIC-0013): As a release engineer, I want a tag-triggered workflow that builds, notarizes, and publishes a draft GitHub Release, so that releases are reproducible and do not require a manual Xcode export.
+Priority: Medium
+Estimate: M
+Status: Complete
+Branch: feature/US-0023-release-workflow
+Dependencies: US-0021
+Acceptance Criteria:
+  - [x] AC-0089: Workflow triggers on v* semver tags pushed to any branch
+  - [x] AC-0090: Developer ID signing certificate is imported from APPLE_CERTIFICATE secret into an ephemeral keychain, cleaned up in an always() step
+  - [x] AC-0091: Scripts/release.sh runs the archive, notarize, and export phases
+  - [x] AC-0092: A draft GitHub Release is created with the notarized .zip; draft status requires owner to publish
+```
+
+```
+TASK-0023 (US-0023): Create .github/workflows/release.yml with code signing, notarization, and gh release create
+Type: Infra
+Assignee: Agent
+Status: Done
+Branch: feature/US-0023-release-workflow
+Notes: Requires 7 secrets to be configured in repo Settings → Secrets → Actions before first use
+```
+
+```
+US-0024 (EPIC-0013): As a developer, I want commit message linting, PR size warnings, Dependabot, and secret scanning so that code hygiene and supply-chain security are enforced automatically.
+Priority: Medium
+Estimate: S
+Status: Complete
+Branch: feature/US-0024-repo-hygiene
+Dependencies: US-0021
+Acceptance Criteria:
+  - [x] AC-0093: commitlint enforces conventional commit format (feat/fix/chore/docs/refactor/perf/style/test/ci/build/revert) on all PR commits
+  - [x] AC-0094: PR size check posts a sticky warning comment at >500 changed lines; hard-fails the check at >1500 lines
+  - [x] AC-0095: Dependabot runs weekly for npm and Swift PM packages, targeting develop
+```
+
+```
+TASK-0024 (US-0024): Add commitlint.config.js, pr-size.yml, dependabot.yml, and enable security scanning via API
+Type: Infra
+Assignee: Agent
+Status: Done
+Branch: feature/US-0024-repo-hygiene
+Notes:
+```
