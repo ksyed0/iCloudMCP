@@ -2046,6 +2046,11 @@
   },
   "recentActivity": [
     {
+      "sessionNum": 2,
+      "date": "2026-05-04",
+      "summary": "Fixed critical dashboard bug: all Epic/Story statuses were `Complete` (invalid) — changed 37 occurrences to `Done` which is the actual sentinel value the parsers check; Added TC-0016 through TC-0040 (25 new TCs) covering all 13 stories that previously had zero test cases; every story now has at least one TC; Implemented full CI/CD pipeline: ESLint, Jest 80% coverage gate, SwiftLint strict, Xcode Debug build, CodeQL security scan (Swift + JS), commitlint, PR size check, Dependabot, secrets scanning"
+    },
+    {
       "sessionNum": 1,
       "date": "2026-05-04",
       "summary": "Installed PlanVisualizer v2.1.0 from `ksyed0/PlanVisualizer` into repo root; all 757 tests pass; Forked and renamed iMCP → iCloudMCP across all Swift sources, pbxproj, xcscheme, plists, README, and CLI binary; Reverse-engineered 12 epics, 20 stories (78 ACs), 20 tasks, and 5 bugs from codebase into RELEASE_PLAN.md and BUGS.md"
@@ -2075,11 +2080,35 @@
       "context": "",
       "date": "2026-05-04",
       "bugIds": []
+    },
+    {
+      "id": "L-0004",
+      "title": "plan_visualizer.md spec says \"Complete\"; parsers require \"Done\"",
+      "rule": "Never use `Status: Complete` for Epics or Stories in RELEASE_PLAN.md. The plan_visualizer.md documentation lists `Complete` as a valid status, but every parser in the codebase (`detect-at-risk.js`, `compute-risk.js`, `snapshot.js`, `render-tabs.js`, `historical-sim.js`) exclusively checks `status === 'Done'`. `Complete` is only used as a _display label_ mapped from `Done` inside `render-tabs.js`. Stories marked `Complete` are treated as still-active, causing all linked TCs to be flagged as at-risk and the traceability matrix to show incorrect state.\n_Discovered when the traceability matrix showed everything as at-risk and Not Run despite all 15 TCs being marked Pass. Root cause: 37 story/epic Status fields used `Complete` instead of `Done`._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
+    },
+    {
+      "id": "L-0005",
+      "title": "install.sh omits docs/agents/images/ — agentic dashboard portraits broken",
+      "rule": "After running PlanVisualizer's `install.sh`, manually copy `docs/agents/images/` from the PlanVisualizer source repo. The install script copies `docs/dashboard.html` but not the agent portrait PNGs it references at the relative path `agents/images/`. Without this, all portrait thumbnails and avatar chips in the agentic dashboard are broken (404).\n_Filed as ksyed0/PlanVisualizer#533. Fixed locally by copying 9 agent PNGs + 27 optimised variants._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
+    },
+    {
+      "id": "L-0006",
+      "title": "Add .gitignore before first npm install to prevent committing node_modules",
+      "rule": "Create `.gitignore` with `node_modules/` before running `npm install` in any project. In this case, `npm install` ran before `.gitignore` existed, committing ~4,200 node_modules files in a single commit. A follow-up commit had to `git rm -r --cached node_modules/` to remove them, creating a noisy history entry.\n_Discovered when the CI commit included 4,221 file additions — almost entirely node_modules. The fix commit had 10,772 file deletions._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
     }
   ],
-  "generatedAt": "2026-05-05T00:18:34.753Z",
-  "commitSha": "b0fb3b0",
-  "buildNumber": "12",
+  "generatedAt": "2026-05-05T02:07:36.011Z",
+  "commitSha": "ef04928",
+  "buildNumber": "15",
   "branch": "develop",
   "sessionTimeline": [],
   "costHistory": {},
@@ -2286,13 +2315,17 @@
       "2026-05-05T00:06:26.092Z",
       "2026-05-05T00:09:44.234Z",
       "2026-05-05T00:14:14.210Z",
-      "2026-05-05T00:18:34.819Z"
+      "2026-05-05T00:18:34.819Z",
+      "2026-05-05T02:02:58.262Z",
+      "2026-05-05T02:07:36.084Z"
     ],
     "doneCounts": [
       0,
       0,
       0,
       0,
+      24,
+      24,
       24,
       24
     ],
@@ -2302,9 +2335,13 @@
       20,
       24,
       24,
+      24,
+      24,
       24
     ],
     "aiCosts": [
+      0,
+      0,
       0,
       0,
       0,
@@ -2318,6 +2355,8 @@
       null,
       null,
       null,
+      null,
+      null,
       null
     ],
     "velocity": [
@@ -2326,9 +2365,13 @@
       0,
       0,
       60,
+      60,
+      60,
       60
     ],
     "openBugs": [
+      5,
+      5,
       5,
       5,
       5,
@@ -2342,9 +2385,13 @@
       0,
       0,
       0,
+      0,
+      0,
       0
     ],
     "inputTokens": [
+      0,
+      0,
       0,
       0,
       0,
@@ -2358,6 +2405,8 @@
       0,
       0,
       0,
+      0,
+      0,
       0
     ],
     "avgRisk": [
@@ -2365,6 +2414,8 @@
       1.2200000000000002,
       1.2200000000000002,
       1.2000000000000004,
+      0,
+      0,
       0,
       0
     ],
