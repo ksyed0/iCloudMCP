@@ -1,0 +1,4 @@
+# All files require review from @ksyed0.
+# Combined with require_code_owner_reviews branch protection, only this
+# account can satisfy the PR approval gate — no other collaborator can merge.
+* @ksyed0

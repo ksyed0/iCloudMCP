@@ -1,8 +1,6 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="Assets/hero-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="Assets/hero-light.svg">
-  <img alt="iCloudMCP">
-</picture>
+<p align="center">
+  <img src="Assets/iCloudMCP_logo_full.png" alt="iCloudMCP" width="300">
+</p>
 
 > [!NOTE]
 > **This is a fork of [iMCP](https://github.com/mattt/iMCP) by [Mattt](https://mat.tt).**
@@ -82,7 +80,7 @@ open iCloudMCP.xcodeproj
 
 Select the **iCloudMCP** scheme and build (`⌘B`). Requires macOS 15.3 or later and Xcode 16+.
 
-<img align="right" width="344" src="/Assets/hero-dark.svg" alt="iCloudMCP icon" />
+<img align="right" width="200" src="/Assets/iCloudMCP_logo_full.png" alt="iCloudMCP icon" />
 
 When you open the app,
 you'll see a

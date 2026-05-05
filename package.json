@@ -10,9 +10,12 @@
     "plan:cleanup": "bash scripts/cleanup-branches.sh",
     "plan:cleanup:dry": "bash scripts/cleanup-branches.sh --dry-run",
     "plan:migrate-config": "node tools/migrate-config.js",
-    "plan:migrate-config:dry": "node tools/migrate-config.js --dry-run"
+    "plan:migrate-config:dry": "node tools/migrate-config.js --dry-run",
+    "lint": "eslint ."
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@eslint/js": "10.0.1",
     "eslint": "10.2.1",
     "jest": "^30.3.0"

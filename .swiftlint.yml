@@ -1,0 +1,53 @@
+included:
+  - App
+  - CLI
+
+excluded:
+  - App/Assets.xcassets
+
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - first_where
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - sorted_imports
+
+disabled_rules:
+  - trailing_whitespace       # handled by editor; noisy in diffs
+  - function_parameter_count  # configureServices() intentionally takes one binding per service
+
+line_length:
+  warning: 120
+  error: 160
+  ignores_comments: true
+  ignores_urls: true
+
+file_length:
+  warning: 600
+  error: 1100  # ServerController.swift is ~1002 lines by design
+
+function_body_length:
+  warning: 80
+  error: 150
+
+type_body_length:
+  warning: 400
+  error: 600
+
+cyclomatic_complexity:
+  warning: 15
+  error: 25
+
+identifier_name:
+  min_length: 2
+  excluded:
+    - id
+    - to
+    - ok
+    - up
+    - x
+    - y
+
+force_cast: warning
+force_try: warning

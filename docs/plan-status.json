@@ -5,7 +5,7 @@
       "title": "MCP Server Infrastructure & Transport",
       "description": "Core Bonjour-based TCP server that hosts the MCP protocol, plus the icloudmcp-server CLI proxy binary that AI clients spawn. Together they form the invisible transport layer all service tools depend on.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": []
@@ -15,7 +15,7 @@
       "title": "Menu Bar Application Shell",
       "description": "The macOS menu bar extra that owns the server lifecycle, presents the service toggle list, and provides access to settings and about screens.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -27,7 +27,7 @@
       "title": "Connection Approval & Client Security",
       "description": "Per-connection approval flow that gates new client access behind user consent, with a persistent trusted-client allowlist stored in AppStorage.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -39,7 +39,7 @@
       "title": "Claude Desktop Integration",
       "description": "One-click setup that writes the icloudmcp-server entry into claude_desktop_config.json, using security-scoped bookmarks to maintain persistent write access.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -51,7 +51,7 @@
       "title": "Calendar Service",
       "description": "EventKit-backed tools for listing calendars, querying events with rich filters, and creating new events with alarms and recurrence.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -63,7 +63,7 @@
       "title": "Contacts Service",
       "description": "CNContactStore-backed tools for reading personal contact info, searching contacts, and creating or updating contact records.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -75,7 +75,7 @@
       "title": "Capture Service",
       "description": "ScreenCaptureKit and AVFoundation tools for taking screenshots, photos, and audio recordings, exposed as base64-encoded image/audio content.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -87,7 +87,7 @@
       "title": "Location & Maps Services",
       "description": "CoreLocation tools for device position and geocoding, plus MapKit tools for place search, directions, ETA, exploration, and static map generation.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -99,7 +99,7 @@
       "title": "Messages Service",
       "description": "Read-only access to the Messages app conversation history via direct SQLite access to chat.db, using a sandbox exception and security-scoped bookmark for persistent access.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -111,7 +111,7 @@
       "title": "Reminders & Shortcuts Services",
       "description": "EventKit-backed reminders tools and an Shortcuts-runner for listing and executing user automations.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -123,7 +123,7 @@
       "title": "Weather & Utilities Services",
       "description": "WeatherKit-backed weather forecast tools (conditionally compiled) and a minimal utilities service for system sounds.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -135,10 +135,22 @@
       "title": "iCloudMCP Fork & Rebranding",
       "description": "Fork the upstream iMCP project, rename all artefacts to iCloudMCP, update bundle identifiers and ownership references, and set up the PlanVisualizer toolchain for this repo.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": []
+    },
+    {
+      "id": "EPIC-0013",
+      "title": "CI/CD Pipeline & Developer Tooling",
+      "description": "Full CI pipeline enforcing lint, test coverage, Swift build, commit message format, and PR hygiene. Includes automated release workflow, branch protection with code-owner gating, Dependabot, and GitHub secret scanning.",
+      "releaseTarget": "MVP",
+      "status": "Done",
+      "startDate": null,
+      "doneDate": null,
+      "dependencies": [
+        "EPIC-0012"
+      ]
     }
   ],
   "stories": [
@@ -148,7 +160,7 @@
       "title": "As an AI client, I want to discover and connect to an MCP server advertised over Bonjour, so that I can call macOS tools without hardcoded ports.",
       "priority": "High",
       "estimate": "L",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0001-bonjour-mcp-server",
       "acs": [
         {
@@ -185,7 +197,7 @@
       "title": "As an AI client, I want to spawn a CLI binary that transparently bridges my stdio to the running iCloudMCP app, so that I do not need to manage TCP connections directly.",
       "priority": "High",
       "estimate": "L",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0002-cli-stdio-proxy",
       "acs": [
         {
@@ -224,7 +236,7 @@
       "title": "As a user, I want a menu bar icon that lets me toggle the MCP server on/off and enable individual services, so that I control what data AI clients can access.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0003-menu-bar-app",
       "acs": [
         {
@@ -258,7 +270,7 @@
       "title": "As a user, I want a Settings window where I can review and remove trusted clients, so that I can revoke previously granted automatic access.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0004-settings-window",
       "acs": [
         {
@@ -287,7 +299,7 @@
       "title": "As a user, I want a dialog to appear when an unknown client connects, so that I can allow or deny access before any tools are called.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0005-connection-approval",
       "acs": [
         {
@@ -326,7 +338,7 @@
       "title": "As a user, I want to receive a notification when a client successfully connects to iCloudMCP, so that I am aware of active connections even when the menu is closed.",
       "priority": "Low",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0006-connection-notification",
       "acs": [
         {
@@ -350,7 +362,7 @@
       "title": "As a user, I want to click a menu item to automatically configure Claude Desktop to use iCloudMCP, so that I do not need to manually edit JSON.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0007-claude-desktop-integration",
       "acs": [
         {
@@ -384,7 +396,7 @@
       "title": "As an AI assistant, I want to list calendars and fetch events with flexible filters, so that I can answer scheduling questions.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0008-calendar-read",
       "acs": [
         {
@@ -418,7 +430,7 @@
       "title": "As an AI assistant, I want to create calendar events with alarms and availability settings, so that I can help users schedule commitments.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0009-calendar-write",
       "acs": [
         {
@@ -452,7 +464,7 @@
       "title": "As an AI assistant, I want to look up the user's own contact card and search the address book, so that I can personalise responses and access contact details.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0010-contacts-service",
       "acs": [
         {
@@ -491,7 +503,7 @@
       "title": "As an AI assistant, I want to capture screenshots, photos, and audio recordings from the user's device, so that I can analyse visual and audio content.",
       "priority": "High",
       "estimate": "L",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0011-capture-service",
       "acs": [
         {
@@ -525,7 +537,7 @@
       "title": "As an AI assistant, I want to get the device's current location and convert between addresses and coordinates, so that I can answer location-aware questions.",
       "priority": "High",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0012-location-service",
       "acs": [
         {
@@ -554,7 +566,7 @@
       "title": "As an AI assistant, I want to search for places, get turn-by-turn directions, estimate travel time, and generate static map images, so that I can assist with navigation and exploration.",
       "priority": "High",
       "estimate": "L",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0013-maps-service",
       "acs": [
         {
@@ -593,7 +605,7 @@
       "title": "As an AI assistant, I want to search Messages conversation history by participant, date range, and content, so that I can answer questions about past conversations.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0014-messages-service",
       "acs": [
         {
@@ -627,7 +639,7 @@
       "title": "As an AI assistant, I want to list reminder lists and fetch or create reminders, so that I can help users manage tasks.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0015-reminders-service",
       "acs": [
         {
@@ -661,7 +673,7 @@
       "title": "As an AI assistant, I want to list and run Shortcuts automations, so that I can trigger complex user-defined workflows.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0016-shortcuts-service",
       "acs": [
         {
@@ -685,7 +697,7 @@
       "title": "As an AI assistant, I want to retrieve current conditions and multi-day/hourly/minute-by-minute forecasts, so that I can answer weather questions.",
       "priority": "Medium",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0017-weather-service",
       "acs": [
         {
@@ -719,7 +731,7 @@
       "title": "As an AI assistant, I want to play a system sound, so that I can give the user an audible notification.",
       "priority": "Low",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0018-utilities-service",
       "acs": [
         {
@@ -743,7 +755,7 @@
       "title": "As the project owner, I want all iMCP references renamed to iCloudMCP throughout the codebase, so that the fork has a distinct identity and does not conflict with the upstream app.",
       "priority": "High",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "main",
       "acs": [
         {
@@ -780,7 +792,7 @@
       "title": "As the project team, I want PlanVisualizer installed and configured, so that we have automated dashboard tracking for costs, stories, and bugs.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "main",
       "acs": [
         {
@@ -806,6 +818,147 @@
       ],
       "dependencies": [
         "US-0019"
+      ]
+    },
+    {
+      "id": "US-0021",
+      "epicId": "EPIC-0013",
+      "title": "As a developer, I want automated lint and test checks to run on every PR, so that regressions and style violations are caught before code reaches develop or main.",
+      "priority": "High",
+      "estimate": "M",
+      "status": "Done",
+      "branch": "feature/US-0021-ci-pipeline",
+      "acs": [
+        {
+          "id": "AC-0079",
+          "text": "ESLint runs on all PRs to main and develop; merge is blocked on lint errors",
+          "done": true
+        },
+        {
+          "id": "AC-0080",
+          "text": "Jest runs with --coverage; merge blocked if lines, functions, or statements fall below 80%",
+          "done": true
+        },
+        {
+          "id": "AC-0081",
+          "text": "SwiftLint strict runs against App/ and CLI/ Swift sources",
+          "done": true
+        },
+        {
+          "id": "AC-0082",
+          "text": "Xcode Debug build is verified on a macOS-15 runner on every PR",
+          "done": true
+        },
+        {
+          "id": "AC-0083",
+          "text": "All four checks are required status checks on both main and develop",
+          "done": true
+        }
+      ],
+      "dependencies": [
+        "US-0020"
+      ]
+    },
+    {
+      "id": "US-0022",
+      "epicId": "EPIC-0013",
+      "title": "As the project owner, I want branch protection rules and CODEOWNERS so that only I can approve PRs and no one can push directly to main or develop.",
+      "priority": "High",
+      "estimate": "S",
+      "status": "Done",
+      "branch": "feature/US-0022-branch-protection",
+      "acs": [
+        {
+          "id": "AC-0084",
+          "text": "main and develop both require at least one approved PR before merge",
+          "done": true
+        },
+        {
+          "id": "AC-0085",
+          "text": ".github/CODEOWNERS assigns * @ksyed0; require_code_owner_reviews is true on both branches",
+          "done": true
+        },
+        {
+          "id": "AC-0086",
+          "text": "Stale reviews are dismissed when new commits are pushed to an open PR",
+          "done": true
+        },
+        {
+          "id": "AC-0087",
+          "text": "Force push and branch deletion are disabled on both protected branches",
+          "done": true
+        },
+        {
+          "id": "AC-0088",
+          "text": "enforce_admins is false, giving the owner an override path",
+          "done": true
+        }
+      ],
+      "dependencies": [
+        "US-0021"
+      ]
+    },
+    {
+      "id": "US-0023",
+      "epicId": "EPIC-0013",
+      "title": "As a release engineer, I want a tag-triggered workflow that builds, notarizes, and publishes a draft GitHub Release, so that releases are reproducible and do not require a manual Xcode export.",
+      "priority": "Medium",
+      "estimate": "M",
+      "status": "Done",
+      "branch": "feature/US-0023-release-workflow",
+      "acs": [
+        {
+          "id": "AC-0089",
+          "text": "Workflow triggers on v* semver tags pushed to any branch",
+          "done": true
+        },
+        {
+          "id": "AC-0090",
+          "text": "Developer ID signing certificate is imported from APPLE_CERTIFICATE secret into an ephemeral keychain, cleaned up in an always() step",
+          "done": true
+        },
+        {
+          "id": "AC-0091",
+          "text": "Scripts/release.sh runs the archive, notarize, and export phases",
+          "done": true
+        },
+        {
+          "id": "AC-0092",
+          "text": "A draft GitHub Release is created with the notarized .zip; draft status requires owner to publish",
+          "done": true
+        }
+      ],
+      "dependencies": [
+        "US-0021"
+      ]
+    },
+    {
+      "id": "US-0024",
+      "epicId": "EPIC-0013",
+      "title": "As a developer, I want commit message linting, PR size warnings, Dependabot, and secret scanning so that code hygiene and supply-chain security are enforced automatically.",
+      "priority": "Medium",
+      "estimate": "S",
+      "status": "Done",
+      "branch": "feature/US-0024-repo-hygiene",
+      "acs": [
+        {
+          "id": "AC-0093",
+          "text": "commitlint enforces conventional commit format (feat/fix/chore/docs/refactor/perf/style/test/ci/build/revert) on all PR commits",
+          "done": true
+        },
+        {
+          "id": "AC-0094",
+          "text": "PR size check posts a sticky warning comment at >500 changed lines; hard-fails the check at >1500 lines",
+          "done": true
+        },
+        {
+          "id": "AC-0095",
+          "text": "Dependabot runs weekly for npm and Swift PM packages, targeting develop",
+          "done": true
+        }
+      ],
+      "dependencies": [
+        "US-0021"
       ]
     }
   ],
@@ -1009,6 +1162,46 @@
       "status": "Done",
       "branch": "main",
       "notes": ""
+    },
+    {
+      "id": "TASK-0021",
+      "storyId": "US-0021",
+      "title": "Create .github/workflows/ci.yml with ESLint, Jest coverage, SwiftLint, and Xcode build jobs",
+      "type": "Infra",
+      "assignee": "Agent",
+      "status": "Done",
+      "branch": "feature/US-0021-ci-pipeline",
+      "notes": ""
+    },
+    {
+      "id": "TASK-0022",
+      "storyId": "US-0022",
+      "title": "Create .github/CODEOWNERS and update branch protection via GitHub API",
+      "type": "Infra",
+      "assignee": "Agent",
+      "status": "Done",
+      "branch": "feature/US-0022-branch-protection",
+      "notes": ""
+    },
+    {
+      "id": "TASK-0023",
+      "storyId": "US-0023",
+      "title": "Create .github/workflows/release.yml with code signing, notarization, and gh release create",
+      "type": "Infra",
+      "assignee": "Agent",
+      "status": "Done",
+      "branch": "feature/US-0023-release-workflow",
+      "notes": "Requires 7 secrets to be configured in repo Settings → Secrets → Actions before first use"
+    },
+    {
+      "id": "TASK-0024",
+      "storyId": "US-0024",
+      "title": "Add commitlint.config.js, pr-size.yml, dependabot.yml, and enable security scanning via API",
+      "type": "Infra",
+      "assignee": "Agent",
+      "status": "Done",
+      "branch": "feature/US-0024-repo-hygiene",
+      "notes": ""
     }
   ],
   "testCases": [
@@ -1019,7 +1212,7 @@
       "relatedTask": "TASK-0008",
       "relatedAC": "AC-0029",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1029,7 +1222,7 @@
       "relatedTask": "TASK-0008",
       "relatedAC": "AC-0030",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1039,7 +1232,7 @@
       "relatedTask": "TASK-0008",
       "relatedAC": "AC-0031",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1049,7 +1242,7 @@
       "relatedTask": "TASK-0009",
       "relatedAC": "AC-0034",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1059,7 +1252,7 @@
       "relatedTask": "TASK-0010",
       "relatedAC": "AC-0037",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1069,7 +1262,7 @@
       "relatedTask": "TASK-0010",
       "relatedAC": "AC-0038",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1079,7 +1272,7 @@
       "relatedTask": "TASK-0011",
       "relatedAC": "AC-0042",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1089,7 +1282,7 @@
       "relatedTask": "TASK-0012",
       "relatedAC": "AC-0046",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1099,7 +1292,7 @@
       "relatedTask": "TASK-0013",
       "relatedAC": "AC-0049",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1109,7 +1302,7 @@
       "relatedTask": "TASK-0014",
       "relatedAC": "AC-0054",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1119,7 +1312,7 @@
       "relatedTask": "TASK-0003",
       "relatedAC": "AC-0004",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1129,7 +1322,7 @@
       "relatedTask": "TASK-0005",
       "relatedAC": "AC-0018",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1139,7 +1332,7 @@
       "relatedTask": "TASK-0005",
       "relatedAC": "AC-0020",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1149,7 +1342,7 @@
       "relatedTask": "TASK-0007",
       "relatedAC": "AC-0026",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1159,7 +1352,257 @@
       "relatedTask": "TASK-0002",
       "relatedAC": "AC-0006",
       "type": "Negative",
-      "status": "Not Run",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0016",
+      "title": "iCloudMCP app appears as _mcp._tcp Bonjour service after launch",
+      "relatedStory": "US-0001",
+      "relatedTask": "TASK-0001",
+      "relatedAC": "AC-0001",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0017",
+      "title": "Two MCP clients can connect simultaneously and both receive tool responses",
+      "relatedStory": "US-0001",
+      "relatedTask": "TASK-0001",
+      "relatedAC": "AC-0002",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0018",
+      "title": "Tool call while app is disabled returns explicit disabled error message",
+      "relatedStory": "US-0001",
+      "relatedTask": "TASK-0001",
+      "relatedAC": "AC-0004",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0019",
+      "title": "Settings window lists clients previously approved with Always Trust",
+      "relatedStory": "US-0004",
+      "relatedTask": "TASK-0004",
+      "relatedAC": "AC-0015",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0020",
+      "title": "Removing a trusted client via context menu causes next connection to prompt approval",
+      "relatedStory": "US-0004",
+      "relatedTask": "TASK-0004",
+      "relatedAC": "AC-0016",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0021",
+      "title": "macOS notification appears when a new approved client connects",
+      "relatedStory": "US-0006",
+      "relatedTask": "TASK-0006",
+      "relatedAC": "AC-0023",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0022",
+      "title": "reminders_lists returns all reminder lists with title and color",
+      "relatedStory": "US-0015",
+      "relatedTask": "TASK-0015",
+      "relatedAC": "AC-0058",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0023",
+      "title": "reminders_fetch returns reminders filtered by list name and date range",
+      "relatedStory": "US-0015",
+      "relatedTask": "TASK-0015",
+      "relatedAC": "AC-0059",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0024",
+      "title": "reminders_create saves a new reminder with title and due date",
+      "relatedStory": "US-0015",
+      "relatedTask": "TASK-0015",
+      "relatedAC": "AC-0060",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0025",
+      "title": "shortcuts_list returns the names of available Shortcuts automations",
+      "relatedStory": "US-0016",
+      "relatedTask": "TASK-0016",
+      "relatedAC": "AC-0062",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0026",
+      "title": "shortcuts_run executes a named shortcut and returns its output",
+      "relatedStory": "US-0016",
+      "relatedTask": "TASK-0016",
+      "relatedAC": "AC-0063",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0027",
+      "title": "weather_current returns temperature, humidity, wind, and conditions for current location",
+      "relatedStory": "US-0017",
+      "relatedTask": "TASK-0017",
+      "relatedAC": "AC-0064",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0028",
+      "title": "weather_daily returns a multi-day forecast with high/low temperatures and precipitation probability",
+      "relatedStory": "US-0017",
+      "relatedTask": "TASK-0017",
+      "relatedAC": "AC-0065",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0029",
+      "title": "utilities_beep plays a named system sound without error",
+      "relatedStory": "US-0018",
+      "relatedTask": "TASK-0018",
+      "relatedAC": "AC-0068",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0030",
+      "title": "Menu bar extra title reads \"iCloudMCP\" and binary path references icloudmcp-server",
+      "relatedStory": "US-0019",
+      "relatedTask": "TASK-0019",
+      "relatedAC": "AC-0070",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0031",
+      "title": "Xcode project bundle identifier is ksyed0.iCloudMCP in both Debug and Release configurations",
+      "relatedStory": "US-0019",
+      "relatedTask": "TASK-0019",
+      "relatedAC": "AC-0071",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0032",
+      "title": "npm run plan:test completes with 757 tests passing and zero failures",
+      "relatedStory": "US-0020",
+      "relatedTask": "TASK-0020",
+      "relatedAC": "AC-0076",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0033",
+      "title": ".claude/settings.json contains the capture-cost.js Stop hook entry",
+      "relatedStory": "US-0020",
+      "relatedTask": "TASK-0020",
+      "relatedAC": "AC-0077",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0034",
+      "title": "PR to develop triggers all four CI checks (ESLint, Jest, SwiftLint, Xcode Build)",
+      "relatedStory": "US-0021",
+      "relatedTask": "TASK-0021",
+      "relatedAC": "AC-0083",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0035",
+      "title": "Dropping Jest coverage below 80% causes the CI coverage check to fail",
+      "relatedStory": "US-0021",
+      "relatedTask": "TASK-0021",
+      "relatedAC": "AC-0080",
+      "type": "Negative",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0036",
+      "title": "Direct push to main without a PR is rejected by branch protection",
+      "relatedStory": "US-0022",
+      "relatedTask": "TASK-0022",
+      "relatedAC": "AC-0084",
+      "type": "Negative",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0037",
+      "title": "PR approval from a non-CODEOWNERS account does not satisfy the code owner review requirement",
+      "relatedStory": "US-0022",
+      "relatedTask": "TASK-0022",
+      "relatedAC": "AC-0085",
+      "type": "Negative",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0038",
+      "title": "Pushing a v* semver tag triggers the release workflow in GitHub Actions",
+      "relatedStory": "US-0023",
+      "relatedTask": "TASK-0023",
+      "relatedAC": "AC-0089",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0039",
+      "title": "Commit with non-conventional type (e.g. \"[feat]\") is rejected by commitlint check on PR",
+      "relatedStory": "US-0024",
+      "relatedTask": "TASK-0024",
+      "relatedAC": "AC-0093",
+      "type": "Negative",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0040",
+      "title": "PR exceeding 500 changed lines receives a sticky size-warning comment",
+      "relatedStory": "US-0024",
+      "relatedTask": "TASK-0024",
+      "relatedAC": "AC-0094",
+      "type": "Functional",
+      "status": "Pass",
       "defect": "None"
     }
   ],
@@ -1341,6 +1784,30 @@
       "inputTokens": 0,
       "outputTokens": 0
     },
+    "US-0021": {
+      "projectedUsd": 800,
+      "costUsd": 0,
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "US-0022": {
+      "projectedUsd": 400,
+      "costUsd": 0,
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "US-0023": {
+      "projectedUsd": 800,
+      "costUsd": 0,
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "US-0024": {
+      "projectedUsd": 400,
+      "costUsd": 0,
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
     "_totals": {
       "costUsd": 0,
       "inputTokens": 0,
@@ -1396,18 +1863,18 @@
   },
   "atRisk": {
     "US-0001": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0002": {
       "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": true,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0003": {
       "missingTCs": false,
@@ -1417,11 +1884,11 @@
       "isAtRisk": false
     },
     "US-0004": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0005": {
       "missingTCs": false,
@@ -1431,11 +1898,11 @@
       "isAtRisk": false
     },
     "US-0006": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0007": {
       "missingTCs": false,
@@ -1494,46 +1961,74 @@
       "isAtRisk": false
     },
     "US-0015": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0016": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0017": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0018": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0019": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0020": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
+    },
+    "US-0021": {
+      "missingTCs": false,
+      "noBranch": false,
+      "failedTCNoBug": false,
+      "openCriticalBug": false,
+      "isAtRisk": false
+    },
+    "US-0022": {
+      "missingTCs": false,
+      "noBranch": false,
+      "failedTCNoBug": false,
+      "openCriticalBug": false,
+      "isAtRisk": false
+    },
+    "US-0023": {
+      "missingTCs": false,
+      "noBranch": false,
+      "failedTCNoBug": false,
+      "openCriticalBug": false,
+      "isAtRisk": false
+    },
+    "US-0024": {
+      "missingTCs": false,
+      "noBranch": false,
+      "failedTCNoBug": false,
+      "openCriticalBug": false,
+      "isAtRisk": false
     }
   },
   "risk": {
@@ -1550,6 +2045,11 @@
     "available": false
   },
   "recentActivity": [
+    {
+      "sessionNum": 2,
+      "date": "2026-05-04",
+      "summary": "Fixed critical dashboard bug: all Epic/Story statuses were `Complete` (invalid) — changed 37 occurrences to `Done` which is the actual sentinel value the parsers check; Added TC-0016 through TC-0040 (25 new TCs) covering all 13 stories that previously had zero test cases; every story now has at least one TC; Implemented full CI/CD pipeline: ESLint, Jest 80% coverage gate, SwiftLint strict, Xcode Debug build, CodeQL security scan (Swift + JS), commitlint, PR size check, Dependabot, secrets scanning"
+    },
     {
       "sessionNum": 1,
       "date": "2026-05-04",
@@ -1580,12 +2080,36 @@
       "context": "",
       "date": "2026-05-04",
       "bugIds": []
+    },
+    {
+      "id": "L-0004",
+      "title": "plan_visualizer.md spec says \"Complete\"; parsers require \"Done\"",
+      "rule": "Never use `Status: Complete` for Epics or Stories in RELEASE_PLAN.md. The plan_visualizer.md documentation lists `Complete` as a valid status, but every parser in the codebase (`detect-at-risk.js`, `compute-risk.js`, `snapshot.js`, `render-tabs.js`, `historical-sim.js`) exclusively checks `status === 'Done'`. `Complete` is only used as a _display label_ mapped from `Done` inside `render-tabs.js`. Stories marked `Complete` are treated as still-active, causing all linked TCs to be flagged as at-risk and the traceability matrix to show incorrect state.\n_Discovered when the traceability matrix showed everything as at-risk and Not Run despite all 15 TCs being marked Pass. Root cause: 37 story/epic Status fields used `Complete` instead of `Done`._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
+    },
+    {
+      "id": "L-0005",
+      "title": "install.sh omits docs/agents/images/ — agentic dashboard portraits broken",
+      "rule": "After running PlanVisualizer's `install.sh`, manually copy `docs/agents/images/` from the PlanVisualizer source repo. The install script copies `docs/dashboard.html` but not the agent portrait PNGs it references at the relative path `agents/images/`. Without this, all portrait thumbnails and avatar chips in the agentic dashboard are broken (404).\n_Filed as ksyed0/PlanVisualizer#533. Fixed locally by copying 9 agent PNGs + 27 optimised variants._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
+    },
+    {
+      "id": "L-0006",
+      "title": "Add .gitignore before first npm install to prevent committing node_modules",
+      "rule": "Create `.gitignore` with `node_modules/` before running `npm install` in any project. In this case, `npm install` ran before `.gitignore` existed, committing ~4,200 node_modules files in a single commit. A follow-up commit had to `git rm -r --cached node_modules/` to remove them, creating a noisy history entry.\n_Discovered when the CI commit included 4,221 file additions — almost entirely node_modules. The fix commit had 10,772 file deletions._",
+      "context": "",
+      "date": "2026-05-04",
+      "bugIds": []
     }
   ],
-  "generatedAt": "2026-05-04T23:40:11.390Z",
-  "commitSha": "a83c28a",
-  "buildNumber": "6",
-  "branch": "main",
+  "generatedAt": "2026-05-05T02:07:36.011Z",
+  "commitSha": "ef04928",
+  "buildNumber": "15",
+  "branch": "develop",
   "sessionTimeline": [],
   "costHistory": {},
   "deltaSpend": null,
@@ -1663,7 +2187,7 @@
   "budget": {
     "totalBudget": null,
     "totalSpent": 0,
-    "totalProjected": 16000,
+    "totalProjected": 18400,
     "percentUsed": null,
     "burnRate": 0,
     "daysRemaining": null,
@@ -1771,6 +2295,14 @@
         "spent": 0,
         "remaining": 0,
         "percentUsed": null
+      },
+      {
+        "id": "EPIC-0013",
+        "title": "CI/CD Pipeline & Developer Tooling",
+        "budget": 0,
+        "spent": 0,
+        "remaining": 0,
+        "percentUsed": null
       }
     ],
     "hasBudget": false
@@ -1779,57 +2311,123 @@
   "trends": {
     "dates": [
       "2026-05-04T23:30:29.050Z",
-      "2026-05-04T23:40:11.469Z"
+      "2026-05-04T23:40:11.469Z",
+      "2026-05-05T00:06:26.092Z",
+      "2026-05-05T00:09:44.234Z",
+      "2026-05-05T00:14:14.210Z",
+      "2026-05-05T00:18:34.819Z",
+      "2026-05-05T02:02:58.262Z",
+      "2026-05-05T02:07:36.084Z"
     ],
     "doneCounts": [
       0,
-      0
+      0,
+      0,
+      0,
+      24,
+      24,
+      24,
+      24
     ],
     "totalStories": [
       20,
-      20
+      20,
+      20,
+      24,
+      24,
+      24,
+      24,
+      24
     ],
     "aiCosts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0
     ],
     "coverage": [
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "velocity": [
       0,
-      0
+      0,
+      0,
+      0,
+      60,
+      60,
+      60,
+      60
     ],
     "openBugs": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
       5,
       5
     ],
     "atRisk": [
       0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0
     ],
     "inputTokens": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0
     ],
     "outputTokens": [
       0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0
     ],
     "avgRisk": [
       1.2200000000000002,
-      1.2200000000000002
+      1.2200000000000002,
+      1.2200000000000002,
+      1.2000000000000004,
+      0,
+      0,
+      0,
+      0
     ],
     "velocityByWeek": {
       "labels": [
         "2026-W19"
       ],
       "points": [
-        0
+        60
       ],
       "rollingAvg": [
-        0
+        60
       ]
     }
   }

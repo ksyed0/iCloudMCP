@@ -10,7 +10,7 @@ not QA sign-off on the forked repo.
 EPIC-0001: MCP Server Infrastructure & Transport
 Description: Core Bonjour-based TCP server that hosts the MCP protocol, plus the icloudmcp-server CLI proxy binary that AI clients spawn. Together they form the invisible transport layer all service tools depend on.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: None
 ```
 
@@ -18,7 +18,7 @@ Dependencies: None
 US-0001 (EPIC-0001): As an AI client, I want to discover and connect to an MCP server advertised over Bonjour, so that I can call macOS tools without hardcoded ports.
 Priority: High
 Estimate: L
-Status: Complete
+Status: Done
 Branch: feature/US-0001-bonjour-mcp-server
 Dependencies: None
 Acceptance Criteria:
@@ -42,7 +42,7 @@ Notes:
 US-0002 (EPIC-0001): As an AI client, I want to spawn a CLI binary that transparently bridges my stdio to the running iCloudMCP app, so that I do not need to manage TCP connections directly.
 Priority: High
 Estimate: L
-Status: Complete
+Status: Done
 Branch: feature/US-0002-cli-stdio-proxy
 Dependencies: US-0001
 Acceptance Criteria:
@@ -68,7 +68,7 @@ Notes:
 EPIC-0002: Menu Bar Application Shell
 Description: The macOS menu bar extra that owns the server lifecycle, presents the service toggle list, and provides access to settings and about screens.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -76,7 +76,7 @@ Dependencies: EPIC-0001
 US-0003 (EPIC-0002): As a user, I want a menu bar icon that lets me toggle the MCP server on/off and enable individual services, so that I control what data AI clients can access.
 Priority: High
 Estimate: M
-Status: Complete
+Status: Done
 Branch: feature/US-0003-menu-bar-app
 Dependencies: US-0001
 Acceptance Criteria:
@@ -99,7 +99,7 @@ Notes:
 US-0004 (EPIC-0002): As a user, I want a Settings window where I can review and remove trusted clients, so that I can revoke previously granted automatic access.
 Priority: Medium
 Estimate: S
-Status: Complete
+Status: Done
 Branch: feature/US-0004-settings-window
 Dependencies: US-0003
 Acceptance Criteria:
@@ -123,7 +123,7 @@ Notes:
 EPIC-0003: Connection Approval & Client Security
 Description: Per-connection approval flow that gates new client access behind user consent, with a persistent trusted-client allowlist stored in AppStorage.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -131,7 +131,7 @@ Dependencies: EPIC-0001
 US-0005 (EPIC-0003): As a user, I want a dialog to appear when an unknown client connects, so that I can allow or deny access before any tools are called.
 Priority: High
 Estimate: M
-Status: Complete
+Status: Done
 Branch: feature/US-0005-connection-approval
 Dependencies: US-0001
 Acceptance Criteria:
@@ -155,7 +155,7 @@ Notes:
 US-0006 (EPIC-0003): As a user, I want to receive a notification when a client successfully connects to iCloudMCP, so that I am aware of active connections even when the menu is closed.
 Priority: Low
 Estimate: S
-Status: Complete
+Status: Done
 Branch: feature/US-0006-connection-notification
 Dependencies: US-0005
 Acceptance Criteria:
@@ -178,7 +178,7 @@ Notes:
 EPIC-0004: Claude Desktop Integration
 Description: One-click setup that writes the icloudmcp-server entry into claude_desktop_config.json, using security-scoped bookmarks to maintain persistent write access.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -186,7 +186,7 @@ Dependencies: EPIC-0001
 US-0007 (EPIC-0004): As a user, I want to click a menu item to automatically configure Claude Desktop to use iCloudMCP, so that I do not need to manually edit JSON.
 Priority: High
 Estimate: M
-Status: Complete
+Status: Done
 Branch: feature/US-0007-claude-desktop-integration
 Dependencies: US-0003
 Acceptance Criteria:
@@ -211,7 +211,7 @@ Notes:
 EPIC-0005: Calendar Service
 Description: EventKit-backed tools for listing calendars, querying events with rich filters, and creating new events with alarms and recurrence.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -219,7 +219,7 @@ Dependencies: EPIC-0001
 US-0008 (EPIC-0005): As an AI assistant, I want to list calendars and fetch events with flexible filters, so that I can answer scheduling questions.
 Priority: High
 Estimate: M
-Status: Complete
+Status: Done
 Branch: feature/US-0008-calendar-read
 Dependencies: US-0001
 Acceptance Criteria:
@@ -242,7 +242,7 @@ Notes:
 US-0009 (EPIC-0005): As an AI assistant, I want to create calendar events with alarms and availability settings, so that I can help users schedule commitments.
 Priority: High
 Estimate: M
-Status: Complete
+Status: Done
 Branch: feature/US-0009-calendar-write
 Dependencies: US-0008
 Acceptance Criteria:
@@ -267,7 +267,7 @@ Notes:
 EPIC-0006: Contacts Service
 Description: CNContactStore-backed tools for reading personal contact info, searching contacts, and creating or updating contact records.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -275,7 +275,7 @@ Dependencies: EPIC-0001
 US-0010 (EPIC-0006): As an AI assistant, I want to look up the user's own contact card and search the address book, so that I can personalise responses and access contact details.
 Priority: High
 Estimate: M
-Status: Complete
+Status: Done
 Branch: feature/US-0010-contacts-service
 Dependencies: US-0001
 Acceptance Criteria:
@@ -301,7 +301,7 @@ Notes:
 EPIC-0007: Capture Service
 Description: ScreenCaptureKit and AVFoundation tools for taking screenshots, photos, and audio recordings, exposed as base64-encoded image/audio content.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -309,7 +309,7 @@ Dependencies: EPIC-0001
 US-0011 (EPIC-0007): As an AI assistant, I want to capture screenshots, photos, and audio recordings from the user's device, so that I can analyse visual and audio content.
 Priority: High
 Estimate: L
-Status: Complete
+Status: Done
 Branch: feature/US-0011-capture-service
 Dependencies: US-0001
 Acceptance Criteria:
@@ -334,7 +334,7 @@ Notes:
 EPIC-0008: Location & Maps Services
 Description: CoreLocation tools for device position and geocoding, plus MapKit tools for place search, directions, ETA, exploration, and static map generation.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -342,7 +342,7 @@ Dependencies: EPIC-0001
 US-0012 (EPIC-0008): As an AI assistant, I want to get the device's current location and convert between addresses and coordinates, so that I can answer location-aware questions.
 Priority: High
 Estimate: S
-Status: Complete
+Status: Done
 Branch: feature/US-0012-location-service
 Dependencies: US-0001
 Acceptance Criteria:
@@ -364,7 +364,7 @@ Notes:
 US-0013 (EPIC-0008): As an AI assistant, I want to search for places, get turn-by-turn directions, estimate travel time, and generate static map images, so that I can assist with navigation and exploration.
 Priority: High
 Estimate: L
-Status: Complete
+Status: Done
 Branch: feature/US-0013-maps-service
 Dependencies: US-0012
 Acceptance Criteria:
@@ -390,7 +390,7 @@ Notes:
 EPIC-0009: Messages Service
 Description: Read-only access to the Messages app conversation history via direct SQLite access to chat.db, using a sandbox exception and security-scoped bookmark for persistent access.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -398,7 +398,7 @@ Dependencies: EPIC-0001
 US-0014 (EPIC-0009): As an AI assistant, I want to search Messages conversation history by participant, date range, and content, so that I can answer questions about past conversations.
 Priority: High
 Estimate: M
-Status: Complete
+Status: Done
 Branch: feature/US-0014-messages-service
 Dependencies: US-0001
 Acceptance Criteria:
@@ -423,7 +423,7 @@ Notes:
 EPIC-0010: Reminders & Shortcuts Services
 Description: EventKit-backed reminders tools and an Shortcuts-runner for listing and executing user automations.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -431,7 +431,7 @@ Dependencies: EPIC-0001
 US-0015 (EPIC-0010): As an AI assistant, I want to list reminder lists and fetch or create reminders, so that I can help users manage tasks.
 Priority: Medium
 Estimate: S
-Status: Complete
+Status: Done
 Branch: feature/US-0015-reminders-service
 Dependencies: US-0001
 Acceptance Criteria:
@@ -454,7 +454,7 @@ Notes:
 US-0016 (EPIC-0010): As an AI assistant, I want to list and run Shortcuts automations, so that I can trigger complex user-defined workflows.
 Priority: Medium
 Estimate: S
-Status: Complete
+Status: Done
 Branch: feature/US-0016-shortcuts-service
 Dependencies: US-0001
 Acceptance Criteria:
@@ -477,7 +477,7 @@ Notes:
 EPIC-0011: Weather & Utilities Services
 Description: WeatherKit-backed weather forecast tools (conditionally compiled) and a minimal utilities service for system sounds.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: EPIC-0001
 ```
 
@@ -485,7 +485,7 @@ Dependencies: EPIC-0001
 US-0017 (EPIC-0011): As an AI assistant, I want to retrieve current conditions and multi-day/hourly/minute-by-minute forecasts, so that I can answer weather questions.
 Priority: Medium
 Estimate: M
-Status: Complete
+Status: Done
 Branch: feature/US-0017-weather-service
 Dependencies: US-0001
 Acceptance Criteria:
@@ -508,7 +508,7 @@ Notes:
 US-0018 (EPIC-0011): As an AI assistant, I want to play a system sound, so that I can give the user an audible notification.
 Priority: Low
 Estimate: S
-Status: Complete
+Status: Done
 Branch: feature/US-0018-utilities-service
 Dependencies: US-0001
 Acceptance Criteria:
@@ -531,7 +531,7 @@ Notes:
 EPIC-0012: iCloudMCP Fork & Rebranding
 Description: Fork the upstream iMCP project, rename all artefacts to iCloudMCP, update bundle identifiers and ownership references, and set up the PlanVisualizer toolchain for this repo.
 Release Target: MVP
-Status: Complete
+Status: Done
 Dependencies: None
 ```
 
@@ -539,7 +539,7 @@ Dependencies: None
 US-0019 (EPIC-0012): As the project owner, I want all iMCP references renamed to iCloudMCP throughout the codebase, so that the fork has a distinct identity and does not conflict with the upstream app.
 Priority: High
 Estimate: S
-Status: Complete
+Status: Done
 Branch: main
 Dependencies: None
 Acceptance Criteria:
@@ -563,7 +563,7 @@ Notes:
 US-0020 (EPIC-0012): As the project team, I want PlanVisualizer installed and configured, so that we have automated dashboard tracking for costs, stories, and bugs.
 Priority: Medium
 Estimate: S
-Status: Complete
+Status: Done
 Branch: main
 Dependencies: US-0019
 Acceptance Criteria:
@@ -579,5 +579,108 @@ Type: Infra
 Assignee: Agent
 Status: Done
 Branch: main
+Notes:
+```
+
+---
+
+```
+EPIC-0013: CI/CD Pipeline & Developer Tooling
+Description: Full CI pipeline enforcing lint, test coverage, Swift build, commit message format, and PR hygiene. Includes automated release workflow, branch protection with code-owner gating, Dependabot, and GitHub secret scanning.
+Release Target: MVP
+Status: Done
+Dependencies: EPIC-0012
+```
+
+```
+US-0021 (EPIC-0013): As a developer, I want automated lint and test checks to run on every PR, so that regressions and style violations are caught before code reaches develop or main.
+Priority: High
+Estimate: M
+Status: Done
+Branch: feature/US-0021-ci-pipeline
+Dependencies: US-0020
+Acceptance Criteria:
+  - [x] AC-0079: ESLint runs on all PRs to main and develop; merge is blocked on lint errors
+  - [x] AC-0080: Jest runs with --coverage; merge blocked if lines, functions, or statements fall below 80%
+  - [x] AC-0081: SwiftLint strict runs against App/ and CLI/ Swift sources
+  - [x] AC-0082: Xcode Debug build is verified on a macOS-15 runner on every PR
+  - [x] AC-0083: All four checks are required status checks on both main and develop
+```
+
+```
+TASK-0021 (US-0021): Create .github/workflows/ci.yml with ESLint, Jest coverage, SwiftLint, and Xcode build jobs
+Type: Infra
+Assignee: Agent
+Status: Done
+Branch: feature/US-0021-ci-pipeline
+Notes:
+```
+
+```
+US-0022 (EPIC-0013): As the project owner, I want branch protection rules and CODEOWNERS so that only I can approve PRs and no one can push directly to main or develop.
+Priority: High
+Estimate: S
+Status: Done
+Branch: feature/US-0022-branch-protection
+Dependencies: US-0021
+Acceptance Criteria:
+  - [x] AC-0084: main and develop both require at least one approved PR before merge
+  - [x] AC-0085: .github/CODEOWNERS assigns * @ksyed0; require_code_owner_reviews is true on both branches
+  - [x] AC-0086: Stale reviews are dismissed when new commits are pushed to an open PR
+  - [x] AC-0087: Force push and branch deletion are disabled on both protected branches
+  - [x] AC-0088: enforce_admins is false, giving the owner an override path
+```
+
+```
+TASK-0022 (US-0022): Create .github/CODEOWNERS and update branch protection via GitHub API
+Type: Infra
+Assignee: Agent
+Status: Done
+Branch: feature/US-0022-branch-protection
+Notes:
+```
+
+```
+US-0023 (EPIC-0013): As a release engineer, I want a tag-triggered workflow that builds, notarizes, and publishes a draft GitHub Release, so that releases are reproducible and do not require a manual Xcode export.
+Priority: Medium
+Estimate: M
+Status: Done
+Branch: feature/US-0023-release-workflow
+Dependencies: US-0021
+Acceptance Criteria:
+  - [x] AC-0089: Workflow triggers on v* semver tags pushed to any branch
+  - [x] AC-0090: Developer ID signing certificate is imported from APPLE_CERTIFICATE secret into an ephemeral keychain, cleaned up in an always() step
+  - [x] AC-0091: Scripts/release.sh runs the archive, notarize, and export phases
+  - [x] AC-0092: A draft GitHub Release is created with the notarized .zip; draft status requires owner to publish
+```
+
+```
+TASK-0023 (US-0023): Create .github/workflows/release.yml with code signing, notarization, and gh release create
+Type: Infra
+Assignee: Agent
+Status: Done
+Branch: feature/US-0023-release-workflow
+Notes: Requires 7 secrets to be configured in repo Settings → Secrets → Actions before first use
+```
+
+```
+US-0024 (EPIC-0013): As a developer, I want commit message linting, PR size warnings, Dependabot, and secret scanning so that code hygiene and supply-chain security are enforced automatically.
+Priority: Medium
+Estimate: S
+Status: Done
+Branch: feature/US-0024-repo-hygiene
+Dependencies: US-0021
+Acceptance Criteria:
+  - [x] AC-0093: commitlint enforces conventional commit format (feat/fix/chore/docs/refactor/perf/style/test/ci/build/revert) on all PR commits
+  - [x] AC-0094: PR size check posts a sticky warning comment at >500 changed lines; hard-fails the check at >1500 lines
+  - [x] AC-0095: Dependabot runs weekly for npm and Swift PM packages, targeting develop
+```
+
+```
+TASK-0024 (US-0024): Add commitlint.config.js, pr-size.yml, dependabot.yml, and enable security scanning via API
+Type: Infra
+Assignee: Agent
+Status: Done
+Branch: feature/US-0024-repo-hygiene
 Notes:
 ```

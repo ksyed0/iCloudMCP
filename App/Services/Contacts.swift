@@ -133,7 +133,9 @@ final class ContactsService: Service {
         Tool(
             name: "contacts_me",
             description:
-                "Get contact information about the user, including name, phone number, email, birthday, relations, address, online presence, and occupation. Always run this tool when the user asks a question that requires personal information about themselves.",
+                "Get contact information about the user, including name, phone number, email, birthday, relations,"
+                + " address, online presence, and occupation."
+                + " Always run this tool when the user asks a question that requires personal information about themselves.",
             inputSchema: .object(
                 properties: [:],
                 additionalProperties: false
@@ -227,7 +229,8 @@ final class ContactsService: Service {
         Tool(
             name: "contacts_update",
             description:
-                "Update an existing contact's information. Only provide values for properties that need to be changed; omit any properties that should remain unchanged.",
+                "Update an existing contact's information. Only provide values for properties that need to be changed;"
+                + " omit any properties that should remain unchanged.",
             inputSchema: .object(
                 properties: ([
                     "identifier": .string(

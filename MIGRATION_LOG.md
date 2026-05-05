@@ -36,6 +36,38 @@ the repo matches prior session notes.
 
 ---
 
+## 2026-05-04 — CI/CD pipeline, branch protection, and GitHub sync
+
+**Type:** Infrastructure Addition
+**Scope:** `.github/`, `package.json`, `commitlint.config.js`, `.swiftlint.yml`
+
+### What Changed
+
+- Added `.github/workflows/ci.yml` — ESLint, Jest 80% coverage gate, SwiftLint strict, Xcode Debug build
+- Added `.github/workflows/codeql.yml` — CodeQL security scan (Swift + JavaScript), weekly schedule
+- Added `.github/workflows/commitlint.yml` — conventional commit format enforced on all PRs
+- Added `.github/workflows/pr-size.yml` — warning at >500 lines, hard fail at >1500
+- Added `.github/workflows/release.yml` — v* tag → sign → notarize → draft GitHub Release
+- Added `.github/dependabot.yml` — weekly npm + Swift PM updates targeting develop
+- Added `.github/CODEOWNERS` — `* @ksyed0` (only owner can satisfy PR review gate)
+- Added `.github/PULL_REQUEST_TEMPLATE.md`
+- Added `.swiftlint.yml` — 120-char line limit, force_cast warning, opt-in rules
+- Added `.gitignore` — node_modules/, coverage/, DerivedData/, dist/
+- Added `commitlint.config.js` + `@commitlint/cli` + `@commitlint/config-conventional`
+- Branch protection set on `main` and `develop` via GitHub API:
+  - 5 required status checks, 1 code owner review, stale dismissal, no force push
+- Enabled: `dependabot_security_updates`, `secret_scanning_non_provider_patterns`, `secret_scanning_validity_checks`
+- Repo pushed to: https://github.com/ksyed0/iCloudMCP
+- PR #1 open: develop → main
+
+### Agent Impact
+
+- All future work must be on `feature/*` or `bugfix/*` branches, PRed to `develop`
+- Commit messages must follow conventional format: `type: description` (no bracket format)
+- Run `npm run plan:test` (must pass) and `npx eslint .` before committing
+
+---
+
 ## 2026-05-04 — PlanVisualizer installed
 
 **Type:** Toolchain Addition

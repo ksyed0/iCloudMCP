@@ -1886,11 +1886,13 @@ function generateHTML(status) {
     transition: opacity .15s;
   }
   .mc-idle-card:hover { opacity: 1; }
-  .mc-idle-portrait { width: 100%; height: 80px; overflow: hidden; }
-  .mc-idle-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-  .mc-idle-name { font-size: 9px; font-weight: 600; color: var(--text-muted); margin-top: 5px; text-align: center; }
-  .mc-idle-role { font-size: 7.5px; color: var(--mc-dim); margin-top: 1px; text-align: center; padding: 0 4px; }
-  .mc-idle-badge { margin-top: 4px; background: var(--mc-surface); color: var(--mc-dim); font-size: 7px; font-weight: 700; letter-spacing: .06em; padding: 1px 6px; border-radius: 10px; border: 1px solid var(--mc-border); }
+  .mc-idle-portrait { width: 100%; height: 150px; overflow: hidden; }
+  .mc-idle-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block; }
+  .mc-idle-footer { display: flex; align-items: center; gap: 5px; padding: 5px 7px 0; width: 100%; box-sizing: border-box; overflow: hidden; }
+  .mc-idle-name { font-size: 9px; font-weight: 700; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
+  .mc-idle-sep { font-size: 8px; color: var(--mc-dim); flex-shrink: 0; }
+  .mc-idle-role { font-size: 8px; color: var(--mc-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; min-width: 0; }
+  .mc-idle-badge { margin-left: auto; flex-shrink: 0; background: var(--mc-surface); color: var(--mc-dim); font-size: 7px; font-weight: 700; letter-spacing: .06em; padding: 1px 6px; border-radius: 10px; border: 1px solid var(--mc-border); }
   @media (max-width: 768px) { .mc-idle-roster { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 480px) { .mc-idle-roster { grid-template-columns: repeat(2, 1fr); } }
 
@@ -2325,10 +2327,8 @@ ${(() => {
       const initial = name.charAt(0).toUpperCase();
       const onerror = `this.parentElement.innerHTML='<div style="width:100%;aspect-ratio:1;background:var(--mc-surface);display:flex;align-items:center;justify-content:center;font-size:22px;">${initial}</div>'`;
       return `<div class="mc-idle-card agent-card is-idle" id="agent-${esc(name)}" data-agent-name="${esc(name)}" data-agent="${esc(name)}" data-agent-status="${esc(statusStr)}" style="--agent-color:${color};">
-  <div class="mc-idle-portrait"><img src="${imgBase}/optimized/${esc(avatar)}-64.png" alt="${esc(name)}" onerror="${esc(onerror)}"></div>
-  <div class="mc-idle-name">${esc(name)}</div>
-  <div class="mc-idle-role">${esc(role)}</div>
-  <div class="mc-idle-badge">IDLE</div>
+  <div class="mc-idle-portrait"><img src="${imgBase}/optimized/${esc(avatar)}-160.png" alt="${esc(name)}" onerror="${esc(onerror)}"></div>
+  <div class="mc-idle-footer"><span class="mc-idle-name">${esc(name)}</span><span class="mc-idle-sep">·</span><span class="mc-idle-role">${esc(role)}</span><span class="mc-idle-badge">IDLE</span></div>
   <div class="agent-status" id="agent-${esc(name)}-status" style="display:none;">${esc(statusStr)}</div>
   <div id="agent-${esc(name)}-task" style="display:none;">${esc(task)}</div>
 </div>`;

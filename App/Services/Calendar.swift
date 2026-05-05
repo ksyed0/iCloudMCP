@@ -65,7 +65,8 @@ final class CalendarService: Service {
                 properties: [
                     "start": .string(
                         description:
-                            "Start date/time (defaults to now; if end is date-only and start is omitted, uses end's local midnight). If timezone is omitted, local time is assumed.",
+                            "Start date/time (defaults to now; if end is date-only and start is omitted, uses end's local midnight)."
+                            + " If timezone is omitted, local time is assumed.",
                         format: .dateTime
                     ),
                     "end": .string(
