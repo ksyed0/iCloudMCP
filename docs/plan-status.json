@@ -1354,6 +1354,256 @@
       "type": "Negative",
       "status": "Pass",
       "defect": "None"
+    },
+    {
+      "id": "TC-0016",
+      "title": "iCloudMCP app appears as _mcp._tcp Bonjour service after launch",
+      "relatedStory": "US-0001",
+      "relatedTask": "TASK-0001",
+      "relatedAC": "AC-0001",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0017",
+      "title": "Two MCP clients can connect simultaneously and both receive tool responses",
+      "relatedStory": "US-0001",
+      "relatedTask": "TASK-0001",
+      "relatedAC": "AC-0002",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0018",
+      "title": "Tool call while app is disabled returns explicit disabled error message",
+      "relatedStory": "US-0001",
+      "relatedTask": "TASK-0001",
+      "relatedAC": "AC-0004",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0019",
+      "title": "Settings window lists clients previously approved with Always Trust",
+      "relatedStory": "US-0004",
+      "relatedTask": "TASK-0004",
+      "relatedAC": "AC-0015",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0020",
+      "title": "Removing a trusted client via context menu causes next connection to prompt approval",
+      "relatedStory": "US-0004",
+      "relatedTask": "TASK-0004",
+      "relatedAC": "AC-0016",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0021",
+      "title": "macOS notification appears when a new approved client connects",
+      "relatedStory": "US-0006",
+      "relatedTask": "TASK-0006",
+      "relatedAC": "AC-0023",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0022",
+      "title": "reminders_lists returns all reminder lists with title and color",
+      "relatedStory": "US-0015",
+      "relatedTask": "TASK-0015",
+      "relatedAC": "AC-0058",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0023",
+      "title": "reminders_fetch returns reminders filtered by list name and date range",
+      "relatedStory": "US-0015",
+      "relatedTask": "TASK-0015",
+      "relatedAC": "AC-0059",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0024",
+      "title": "reminders_create saves a new reminder with title and due date",
+      "relatedStory": "US-0015",
+      "relatedTask": "TASK-0015",
+      "relatedAC": "AC-0060",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0025",
+      "title": "shortcuts_list returns the names of available Shortcuts automations",
+      "relatedStory": "US-0016",
+      "relatedTask": "TASK-0016",
+      "relatedAC": "AC-0062",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0026",
+      "title": "shortcuts_run executes a named shortcut and returns its output",
+      "relatedStory": "US-0016",
+      "relatedTask": "TASK-0016",
+      "relatedAC": "AC-0063",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0027",
+      "title": "weather_current returns temperature, humidity, wind, and conditions for current location",
+      "relatedStory": "US-0017",
+      "relatedTask": "TASK-0017",
+      "relatedAC": "AC-0064",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0028",
+      "title": "weather_daily returns a multi-day forecast with high/low temperatures and precipitation probability",
+      "relatedStory": "US-0017",
+      "relatedTask": "TASK-0017",
+      "relatedAC": "AC-0065",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0029",
+      "title": "utilities_beep plays a named system sound without error",
+      "relatedStory": "US-0018",
+      "relatedTask": "TASK-0018",
+      "relatedAC": "AC-0068",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0030",
+      "title": "Menu bar extra title reads \"iCloudMCP\" and binary path references icloudmcp-server",
+      "relatedStory": "US-0019",
+      "relatedTask": "TASK-0019",
+      "relatedAC": "AC-0070",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0031",
+      "title": "Xcode project bundle identifier is ksyed0.iCloudMCP in both Debug and Release configurations",
+      "relatedStory": "US-0019",
+      "relatedTask": "TASK-0019",
+      "relatedAC": "AC-0071",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0032",
+      "title": "npm run plan:test completes with 757 tests passing and zero failures",
+      "relatedStory": "US-0020",
+      "relatedTask": "TASK-0020",
+      "relatedAC": "AC-0076",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0033",
+      "title": ".claude/settings.json contains the capture-cost.js Stop hook entry",
+      "relatedStory": "US-0020",
+      "relatedTask": "TASK-0020",
+      "relatedAC": "AC-0077",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0034",
+      "title": "PR to develop triggers all four CI checks (ESLint, Jest, SwiftLint, Xcode Build)",
+      "relatedStory": "US-0021",
+      "relatedTask": "TASK-0021",
+      "relatedAC": "AC-0083",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0035",
+      "title": "Dropping Jest coverage below 80% causes the CI coverage check to fail",
+      "relatedStory": "US-0021",
+      "relatedTask": "TASK-0021",
+      "relatedAC": "AC-0080",
+      "type": "Negative",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0036",
+      "title": "Direct push to main without a PR is rejected by branch protection",
+      "relatedStory": "US-0022",
+      "relatedTask": "TASK-0022",
+      "relatedAC": "AC-0084",
+      "type": "Negative",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0037",
+      "title": "PR approval from a non-CODEOWNERS account does not satisfy the code owner review requirement",
+      "relatedStory": "US-0022",
+      "relatedTask": "TASK-0022",
+      "relatedAC": "AC-0085",
+      "type": "Negative",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0038",
+      "title": "Pushing a v* semver tag triggers the release workflow in GitHub Actions",
+      "relatedStory": "US-0023",
+      "relatedTask": "TASK-0023",
+      "relatedAC": "AC-0089",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0039",
+      "title": "Commit with non-conventional type (e.g. \"[feat]\") is rejected by commitlint check on PR",
+      "relatedStory": "US-0024",
+      "relatedTask": "TASK-0024",
+      "relatedAC": "AC-0093",
+      "type": "Negative",
+      "status": "Pass",
+      "defect": "None"
+    },
+    {
+      "id": "TC-0040",
+      "title": "PR exceeding 500 changed lines receives a sticky size-warning comment",
+      "relatedStory": "US-0024",
+      "relatedTask": "TASK-0024",
+      "relatedAC": "AC-0094",
+      "type": "Functional",
+      "status": "Pass",
+      "defect": "None"
     }
   ],
   "bugs": [
@@ -1613,7 +1863,7 @@
   },
   "atRisk": {
     "US-0001": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
@@ -1634,7 +1884,7 @@
       "isAtRisk": false
     },
     "US-0004": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
@@ -1648,7 +1898,7 @@
       "isAtRisk": false
     },
     "US-0006": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
@@ -1711,70 +1961,70 @@
       "isAtRisk": false
     },
     "US-0015": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0016": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0017": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0018": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0019": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0020": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0021": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0022": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0023": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
       "isAtRisk": false
     },
     "US-0024": {
-      "missingTCs": true,
+      "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
@@ -1827,9 +2077,9 @@
       "bugIds": []
     }
   ],
-  "generatedAt": "2026-05-05T00:14:14.046Z",
-  "commitSha": "ed04adf",
-  "buildNumber": "11",
+  "generatedAt": "2026-05-05T00:18:34.753Z",
+  "commitSha": "b0fb3b0",
+  "buildNumber": "12",
   "branch": "develop",
   "sessionTimeline": [],
   "costHistory": {},
@@ -2035,13 +2285,15 @@
       "2026-05-04T23:40:11.469Z",
       "2026-05-05T00:06:26.092Z",
       "2026-05-05T00:09:44.234Z",
-      "2026-05-05T00:14:14.210Z"
+      "2026-05-05T00:14:14.210Z",
+      "2026-05-05T00:18:34.819Z"
     ],
     "doneCounts": [
       0,
       0,
       0,
       0,
+      24,
       24
     ],
     "totalStories": [
@@ -2049,9 +2301,11 @@
       20,
       20,
       24,
+      24,
       24
     ],
     "aiCosts": [
+      0,
       0,
       0,
       0,
@@ -2063,6 +2317,7 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "velocity": [
@@ -2070,9 +2325,11 @@
       0,
       0,
       0,
+      60,
       60
     ],
     "openBugs": [
+      5,
       5,
       5,
       5,
@@ -2084,9 +2341,11 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "inputTokens": [
+      0,
       0,
       0,
       0,
@@ -2098,6 +2357,7 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "avgRisk": [
@@ -2105,6 +2365,7 @@
       1.2200000000000002,
       1.2200000000000002,
       1.2000000000000004,
+      0,
       0
     ],
     "velocityByWeek": {

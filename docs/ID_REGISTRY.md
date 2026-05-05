@@ -10,6 +10,6 @@ the artefact content. IDs are permanent and never reused.
 | US       | US-0025           | US-0024       |
 | TASK     | TASK-0025         | TASK-0024     |
 | AC       | AC-0096           | AC-0095       |
-| TC       | TC-0016           | TC-0015       |
+| TC       | TC-0041           | TC-0040       |
 | BUG      | BUG-0006          | BUG-0005      |
 | L        | L-0004            | L-0003        |
