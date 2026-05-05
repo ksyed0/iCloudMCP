@@ -1,9 +1,9 @@
 name: PR Size Check
 
-# Temporarily disabled — re-enable after PR #1 (develop→main) is merged.
-# The initial PR includes the node_modules removal commit (739k lines) which
-# triggers the hard-fail threshold. Restore the pull_request trigger below.
 on:
+  pull_request:
+    branches: [main, develop]
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 jobs:
