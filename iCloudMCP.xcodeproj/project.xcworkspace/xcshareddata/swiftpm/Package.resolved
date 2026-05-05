@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loopwork-ai/JSONSchema.git",
       "state" : {
-        "revision" : "e17c9e1fb6afbad656824d03f996cf8621f9db83",
-        "version" : "1.3.0"
+        "revision" : "4c6f2467d5bc72b062c7a9b7e4cd77a09635ea8b",
+        "version" : "1.3.1"
       }
     },
     {
