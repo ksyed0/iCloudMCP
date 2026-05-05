@@ -1,0 +1,82 @@
+name: PR Size Check
+
+on:
+  pull_request:
+    branches: [main, develop]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  size-check:
+    name: Check PR size
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Check diff size and warn if large
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const additions = pr.additions;
+            const deletions = pr.deletions;
+            const total = additions + deletions;
+
+            const WARN_THRESHOLD = 500;
+            const HARD_THRESHOLD = 1500;
+
+            const sizeLabel =
+              total < 100  ? '🟢 XS' :
+              total < 250  ? '🟢 S'  :
+              total < 500  ? '🟡 M'  :
+              total < 1000 ? '🟠 L'  : '🔴 XL';
+
+            console.log(`PR diff: +${additions} -${deletions} = ${total} total lines (${sizeLabel})`);
+
+            if (total <= WARN_THRESHOLD) {
+              console.log('PR size is within the recommended limit.');
+              return;
+            }
+
+            const body = total > HARD_THRESHOLD
+              ? `## ⚠️ Large PR Warning — ${sizeLabel} (${total} lines changed)\n\n` +
+                `This PR changes **${total} lines** (+${additions} / -${deletions}), ` +
+                `which is significantly above the 500-line recommended limit.\n\n` +
+                `**Consider splitting into smaller PRs** to make review easier and reduce risk.\n\n` +
+                `_Threshold: warn at 500 lines, flag at 1500 lines._`
+              : `## ℹ️ PR Size Notice — ${sizeLabel} (${total} lines changed)\n\n` +
+                `This PR changes **${total} lines** (+${additions} / -${deletions}). ` +
+                `Reviews are easier when PRs stay under 500 lines.\n\n` +
+                `_This is a notice only — the PR is not blocked._`;
+
+            // Find and update existing bot comment, or create a new one
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+            });
+
+            const botComment = comments.find(c =>
+              c.user.type === 'Bot' && c.body.includes('PR Size')
+            );
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body,
+              });
+            }
+
+            // Hard threshold fails the step so it shows as a failed check
+            if (total > HARD_THRESHOLD) {
+              core.setFailed(`PR is ${total} lines — split into smaller PRs before merging.`);
+            }

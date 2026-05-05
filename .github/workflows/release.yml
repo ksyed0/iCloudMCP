@@ -1,0 +1,103 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+# Required secrets (configure in Settings → Secrets → Actions):
+#   APPLE_CERTIFICATE          Base64-encoded Developer ID Application .p12
+#   APPLE_CERTIFICATE_PASSWORD Password for the .p12 file
+#   APPLE_TEAM_ID              10-character Apple Developer Team ID
+#   KEYCHAIN_PASSWORD          Any strong password for the ephemeral CI keychain
+#   NOTARYTOOL_APPLE_ID        Apple ID used for notarization (e.g. you@example.com)
+#   NOTARYTOOL_PASSWORD        App-specific password for that Apple ID
+#   NOTARYTOOL_TEAM_ID         Same as APPLE_TEAM_ID
+
+permissions:
+  contents: write  # needed to create GitHub Releases
+
+jobs:
+  release:
+    name: Build, notarize & release
+    runs-on: macos-15
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Extract version from tag
+        id: version
+        run: |
+          TAG="${GITHUB_REF_NAME}"          # e.g. v1.2.3
+          VERSION="${TAG#v}"                # 1.2.3
+          echo "tag=$TAG"       >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Import signing certificate
+        env:
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          KEYCHAIN_PATH="$RUNNER_TEMP/app-signing.keychain-db"
+          echo "$APPLE_CERTIFICATE" | base64 --decode > "$RUNNER_TEMP/certificate.p12"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          security import "$RUNNER_TEMP/certificate.p12" \
+            -P "$APPLE_CERTIFICATE_PASSWORD" \
+            -A -t cert -f pkcs12 \
+            -k "$KEYCHAIN_PATH"
+
+          security list-keychain -d user -s "$KEYCHAIN_PATH"
+
+      - name: Store notarytool credentials
+        env:
+          NOTARYTOOL_APPLE_ID: ${{ secrets.NOTARYTOOL_APPLE_ID }}
+          NOTARYTOOL_PASSWORD: ${{ secrets.NOTARYTOOL_PASSWORD }}
+          NOTARYTOOL_TEAM_ID: ${{ secrets.NOTARYTOOL_TEAM_ID }}
+        run: |
+          xcrun notarytool store-credentials "iCloudMCP-notarytool" \
+            --apple-id "$NOTARYTOOL_APPLE_ID" \
+            --password "$NOTARYTOOL_PASSWORD" \
+            --team-id "$NOTARYTOOL_TEAM_ID"
+
+      - name: Archive, notarize & export
+        env:
+          APP_NAME: iCloudMCP
+          SCHEME: iCloudMCP
+          VERSION: ${{ steps.version.outputs.version }}
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          KEYCHAIN_PROFILE: iCloudMCP-notarytool
+          SIGNING_CERTIFICATE: Developer ID Application
+        run: |
+          bash Scripts/release.sh archive
+          bash Scripts/release.sh notarize
+          bash Scripts/release.sh export
+
+      - name: Package release artifact
+        run: |
+          cd dist/export
+          zip -r "../../iCloudMCP-${{ steps.version.outputs.version }}.zip" iCloudMCP.app
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.version.outputs.tag }}" \
+            "iCloudMCP-${{ steps.version.outputs.version }}.zip" \
+            --title "iCloudMCP ${{ steps.version.outputs.version }}" \
+            --generate-notes \
+            --draft
+
+      - name: Clean up keychain
+        if: always()
+        run: |
+          security delete-keychain "$RUNNER_TEMP/app-signing.keychain-db" || true
