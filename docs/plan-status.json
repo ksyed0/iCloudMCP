@@ -5,7 +5,7 @@
       "title": "MCP Server Infrastructure & Transport",
       "description": "Core Bonjour-based TCP server that hosts the MCP protocol, plus the icloudmcp-server CLI proxy binary that AI clients spawn. Together they form the invisible transport layer all service tools depend on.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": []
@@ -15,7 +15,7 @@
       "title": "Menu Bar Application Shell",
       "description": "The macOS menu bar extra that owns the server lifecycle, presents the service toggle list, and provides access to settings and about screens.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -27,7 +27,7 @@
       "title": "Connection Approval & Client Security",
       "description": "Per-connection approval flow that gates new client access behind user consent, with a persistent trusted-client allowlist stored in AppStorage.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -39,7 +39,7 @@
       "title": "Claude Desktop Integration",
       "description": "One-click setup that writes the icloudmcp-server entry into claude_desktop_config.json, using security-scoped bookmarks to maintain persistent write access.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -51,7 +51,7 @@
       "title": "Calendar Service",
       "description": "EventKit-backed tools for listing calendars, querying events with rich filters, and creating new events with alarms and recurrence.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -63,7 +63,7 @@
       "title": "Contacts Service",
       "description": "CNContactStore-backed tools for reading personal contact info, searching contacts, and creating or updating contact records.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -75,7 +75,7 @@
       "title": "Capture Service",
       "description": "ScreenCaptureKit and AVFoundation tools for taking screenshots, photos, and audio recordings, exposed as base64-encoded image/audio content.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -87,7 +87,7 @@
       "title": "Location & Maps Services",
       "description": "CoreLocation tools for device position and geocoding, plus MapKit tools for place search, directions, ETA, exploration, and static map generation.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -99,7 +99,7 @@
       "title": "Messages Service",
       "description": "Read-only access to the Messages app conversation history via direct SQLite access to chat.db, using a sandbox exception and security-scoped bookmark for persistent access.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -111,7 +111,7 @@
       "title": "Reminders & Shortcuts Services",
       "description": "EventKit-backed reminders tools and an Shortcuts-runner for listing and executing user automations.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -123,7 +123,7 @@
       "title": "Weather & Utilities Services",
       "description": "WeatherKit-backed weather forecast tools (conditionally compiled) and a minimal utilities service for system sounds.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -135,7 +135,7 @@
       "title": "iCloudMCP Fork & Rebranding",
       "description": "Fork the upstream iMCP project, rename all artefacts to iCloudMCP, update bundle identifiers and ownership references, and set up the PlanVisualizer toolchain for this repo.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": []
@@ -145,7 +145,7 @@
       "title": "CI/CD Pipeline & Developer Tooling",
       "description": "Full CI pipeline enforcing lint, test coverage, Swift build, commit message format, and PR hygiene. Includes automated release workflow, branch protection with code-owner gating, Dependabot, and GitHub secret scanning.",
       "releaseTarget": "MVP",
-      "status": "Complete",
+      "status": "Done",
       "startDate": null,
       "doneDate": null,
       "dependencies": [
@@ -160,7 +160,7 @@
       "title": "As an AI client, I want to discover and connect to an MCP server advertised over Bonjour, so that I can call macOS tools without hardcoded ports.",
       "priority": "High",
       "estimate": "L",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0001-bonjour-mcp-server",
       "acs": [
         {
@@ -197,7 +197,7 @@
       "title": "As an AI client, I want to spawn a CLI binary that transparently bridges my stdio to the running iCloudMCP app, so that I do not need to manage TCP connections directly.",
       "priority": "High",
       "estimate": "L",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0002-cli-stdio-proxy",
       "acs": [
         {
@@ -236,7 +236,7 @@
       "title": "As a user, I want a menu bar icon that lets me toggle the MCP server on/off and enable individual services, so that I control what data AI clients can access.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0003-menu-bar-app",
       "acs": [
         {
@@ -270,7 +270,7 @@
       "title": "As a user, I want a Settings window where I can review and remove trusted clients, so that I can revoke previously granted automatic access.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0004-settings-window",
       "acs": [
         {
@@ -299,7 +299,7 @@
       "title": "As a user, I want a dialog to appear when an unknown client connects, so that I can allow or deny access before any tools are called.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0005-connection-approval",
       "acs": [
         {
@@ -338,7 +338,7 @@
       "title": "As a user, I want to receive a notification when a client successfully connects to iCloudMCP, so that I am aware of active connections even when the menu is closed.",
       "priority": "Low",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0006-connection-notification",
       "acs": [
         {
@@ -362,7 +362,7 @@
       "title": "As a user, I want to click a menu item to automatically configure Claude Desktop to use iCloudMCP, so that I do not need to manually edit JSON.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0007-claude-desktop-integration",
       "acs": [
         {
@@ -396,7 +396,7 @@
       "title": "As an AI assistant, I want to list calendars and fetch events with flexible filters, so that I can answer scheduling questions.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0008-calendar-read",
       "acs": [
         {
@@ -430,7 +430,7 @@
       "title": "As an AI assistant, I want to create calendar events with alarms and availability settings, so that I can help users schedule commitments.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0009-calendar-write",
       "acs": [
         {
@@ -464,7 +464,7 @@
       "title": "As an AI assistant, I want to look up the user's own contact card and search the address book, so that I can personalise responses and access contact details.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0010-contacts-service",
       "acs": [
         {
@@ -503,7 +503,7 @@
       "title": "As an AI assistant, I want to capture screenshots, photos, and audio recordings from the user's device, so that I can analyse visual and audio content.",
       "priority": "High",
       "estimate": "L",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0011-capture-service",
       "acs": [
         {
@@ -537,7 +537,7 @@
       "title": "As an AI assistant, I want to get the device's current location and convert between addresses and coordinates, so that I can answer location-aware questions.",
       "priority": "High",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0012-location-service",
       "acs": [
         {
@@ -566,7 +566,7 @@
       "title": "As an AI assistant, I want to search for places, get turn-by-turn directions, estimate travel time, and generate static map images, so that I can assist with navigation and exploration.",
       "priority": "High",
       "estimate": "L",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0013-maps-service",
       "acs": [
         {
@@ -605,7 +605,7 @@
       "title": "As an AI assistant, I want to search Messages conversation history by participant, date range, and content, so that I can answer questions about past conversations.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0014-messages-service",
       "acs": [
         {
@@ -639,7 +639,7 @@
       "title": "As an AI assistant, I want to list reminder lists and fetch or create reminders, so that I can help users manage tasks.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0015-reminders-service",
       "acs": [
         {
@@ -673,7 +673,7 @@
       "title": "As an AI assistant, I want to list and run Shortcuts automations, so that I can trigger complex user-defined workflows.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0016-shortcuts-service",
       "acs": [
         {
@@ -697,7 +697,7 @@
       "title": "As an AI assistant, I want to retrieve current conditions and multi-day/hourly/minute-by-minute forecasts, so that I can answer weather questions.",
       "priority": "Medium",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0017-weather-service",
       "acs": [
         {
@@ -731,7 +731,7 @@
       "title": "As an AI assistant, I want to play a system sound, so that I can give the user an audible notification.",
       "priority": "Low",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0018-utilities-service",
       "acs": [
         {
@@ -755,7 +755,7 @@
       "title": "As the project owner, I want all iMCP references renamed to iCloudMCP throughout the codebase, so that the fork has a distinct identity and does not conflict with the upstream app.",
       "priority": "High",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "main",
       "acs": [
         {
@@ -792,7 +792,7 @@
       "title": "As the project team, I want PlanVisualizer installed and configured, so that we have automated dashboard tracking for costs, stories, and bugs.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "main",
       "acs": [
         {
@@ -826,7 +826,7 @@
       "title": "As a developer, I want automated lint and test checks to run on every PR, so that regressions and style violations are caught before code reaches develop or main.",
       "priority": "High",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0021-ci-pipeline",
       "acs": [
         {
@@ -865,7 +865,7 @@
       "title": "As the project owner, I want branch protection rules and CODEOWNERS so that only I can approve PRs and no one can push directly to main or develop.",
       "priority": "High",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0022-branch-protection",
       "acs": [
         {
@@ -904,7 +904,7 @@
       "title": "As a release engineer, I want a tag-triggered workflow that builds, notarizes, and publishes a draft GitHub Release, so that releases are reproducible and do not require a manual Xcode export.",
       "priority": "Medium",
       "estimate": "M",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0023-release-workflow",
       "acs": [
         {
@@ -938,7 +938,7 @@
       "title": "As a developer, I want commit message linting, PR size warnings, Dependabot, and secret scanning so that code hygiene and supply-chain security are enforced automatically.",
       "priority": "Medium",
       "estimate": "S",
-      "status": "Complete",
+      "status": "Done",
       "branch": "feature/US-0024-repo-hygiene",
       "acs": [
         {
@@ -1212,7 +1212,7 @@
       "relatedTask": "TASK-0008",
       "relatedAC": "AC-0029",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1222,7 +1222,7 @@
       "relatedTask": "TASK-0008",
       "relatedAC": "AC-0030",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1232,7 +1232,7 @@
       "relatedTask": "TASK-0008",
       "relatedAC": "AC-0031",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1242,7 +1242,7 @@
       "relatedTask": "TASK-0009",
       "relatedAC": "AC-0034",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1252,7 +1252,7 @@
       "relatedTask": "TASK-0010",
       "relatedAC": "AC-0037",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1262,7 +1262,7 @@
       "relatedTask": "TASK-0010",
       "relatedAC": "AC-0038",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1272,7 +1272,7 @@
       "relatedTask": "TASK-0011",
       "relatedAC": "AC-0042",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1282,7 +1282,7 @@
       "relatedTask": "TASK-0012",
       "relatedAC": "AC-0046",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1292,7 +1292,7 @@
       "relatedTask": "TASK-0013",
       "relatedAC": "AC-0049",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1302,7 +1302,7 @@
       "relatedTask": "TASK-0014",
       "relatedAC": "AC-0054",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1312,7 +1312,7 @@
       "relatedTask": "TASK-0003",
       "relatedAC": "AC-0004",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1322,7 +1322,7 @@
       "relatedTask": "TASK-0005",
       "relatedAC": "AC-0018",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1332,7 +1332,7 @@
       "relatedTask": "TASK-0005",
       "relatedAC": "AC-0020",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1342,7 +1342,7 @@
       "relatedTask": "TASK-0007",
       "relatedAC": "AC-0026",
       "type": "Functional",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     },
     {
@@ -1352,7 +1352,7 @@
       "relatedTask": "TASK-0002",
       "relatedAC": "AC-0006",
       "type": "Negative",
-      "status": "Not Run",
+      "status": "Pass",
       "defect": "None"
     }
   ],
@@ -1617,14 +1617,14 @@
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0002": {
       "missingTCs": false,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": true,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0003": {
       "missingTCs": false,
@@ -1638,7 +1638,7 @@
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0005": {
       "missingTCs": false,
@@ -1652,7 +1652,7 @@
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0007": {
       "missingTCs": false,
@@ -1715,70 +1715,70 @@
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0016": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0017": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0018": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0019": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0020": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0021": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0022": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0023": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     },
     "US-0024": {
       "missingTCs": true,
       "noBranch": false,
       "failedTCNoBug": false,
       "openCriticalBug": false,
-      "isAtRisk": true
+      "isAtRisk": false
     }
   },
   "risk": {
@@ -1827,9 +1827,9 @@
       "bugIds": []
     }
   ],
-  "generatedAt": "2026-05-05T00:09:44.141Z",
-  "commitSha": "15de620",
-  "buildNumber": "10",
+  "generatedAt": "2026-05-05T00:14:14.046Z",
+  "commitSha": "ed04adf",
+  "buildNumber": "11",
   "branch": "develop",
   "sessionTimeline": [],
   "costHistory": {},
@@ -2034,21 +2034,25 @@
       "2026-05-04T23:30:29.050Z",
       "2026-05-04T23:40:11.469Z",
       "2026-05-05T00:06:26.092Z",
-      "2026-05-05T00:09:44.234Z"
+      "2026-05-05T00:09:44.234Z",
+      "2026-05-05T00:14:14.210Z"
     ],
     "doneCounts": [
       0,
       0,
       0,
-      0
+      0,
+      24
     ],
     "totalStories": [
       20,
       20,
       20,
+      24,
       24
     ],
     "aiCosts": [
+      0,
       0,
       0,
       0,
@@ -2058,15 +2062,18 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "velocity": [
       0,
       0,
       0,
-      0
+      0,
+      60
     ],
     "openBugs": [
+      5,
       5,
       5,
       5,
@@ -2076,9 +2083,11 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "inputTokens": [
+      0,
       0,
       0,
       0,
@@ -2088,23 +2097,25 @@
       0,
       0,
       0,
+      0,
       0
     ],
     "avgRisk": [
       1.2200000000000002,
       1.2200000000000002,
       1.2200000000000002,
-      1.2000000000000004
+      1.2000000000000004,
+      0
     ],
     "velocityByWeek": {
       "labels": [
         "2026-W19"
       ],
       "points": [
-        0
+        60
       ],
       "rollingAvg": [
-        0
+        60
       ]
     }
   }
